@@ -332,6 +332,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320919311}
   m_CullTransparentMesh: 0
+--- !u!1 &576016368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0,
+    type: 3}
+  m_PrefabInstance: {fileID: 187404336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &576016369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576016368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13135d8b81b1b2b4ca352c11ec40186d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FPScontroller: {fileID: 576016368}
 --- !u!1 &616974858
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,6 +396,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 799993371}
   dialogueText: {fileID: 320919313}
+  dialogueBox: {fileID: 1355964145}
+  freezescript: {fileID: 576016369}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,7 +572,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 752910889}
+      - m_Target: {fileID: 616974860}
         m_MethodName: DisplayNextSentence
         m_Mode: 1
         m_Arguments:
@@ -612,6 +633,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 799993371}
   dialogueText: {fileID: 320919313}
+  dialogueBox: {fileID: 1355964145}
+  freezescript: {fileID: 0}
 --- !u!1 &799993369
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +1007,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -1363,6 +1386,7 @@ GameObject:
   - component: {fileID: 1355964146}
   - component: {fileID: 1355964148}
   - component: {fileID: 1355964147}
+  - component: {fileID: 1355964149}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -1429,6 +1453,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355964145}
   m_CullTransparentMesh: 0
+--- !u!114 &1355964149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355964145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e98836d112308b41a54ccdfed59b035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 799993371}
+  dialogueText: {fileID: 320919313}
+  dialogueBox: {fileID: 0}
+  freezescript: {fileID: 0}
 --- !u!1 &1797840650
 GameObject:
   m_ObjectHideFlags: 0
@@ -1795,6 +1835,6 @@ MonoBehaviour:
   dialogue:
     name: Sonya
     sentences:
-    - efaefa
-    - awgarhr
-    - aggeww
+    - Sentence 1
+    - Sentence 2
+    - Sentence 3
