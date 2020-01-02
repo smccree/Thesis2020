@@ -7,10 +7,17 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+    //Dialogue box variables:
     public TMP_Text nameText;
     public TMP_Text dialogueText;
     public GameObject dialogueBox;
     public FreezePlayer freezescript;
+    public Animator D_animator;
+
+    //Input Window Variables:
+    public GameObject inputWindow;
+    public TMP_Text inputText;
+    public Animator I_animator;
 
     //building simple dialogue system to start - added complexity l8r
     //I do need this
@@ -20,24 +27,20 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dialogueBox.SetActive(false);
+        //dialogueBox.SetActive(false);
         sentences = new Queue<string>();
     }
     //steps to do this:
     //1: pause player movement (enter key + keyboard type become active)
     //2: pop up dialogue box
     //3: spawn first message from Voice
-    public void DialoguePopup()
-    {
-        //open up the dialogue box - triggered at specific game moments
-        //freeze movement and enable text controls
-        dialogueBox.SetActive(true);
-        freezescript.Freeze();
-    }
     public void StartDialogue(Dialogue dialogue)
     {
         Debug.Log("Starting conversation with " + dialogue.name);
-        DialoguePopup();
+
+        freezescript.Freeze();
+        D_animator.SetBool("IsOpen", true); //open dialogue box animation
+
         nameText.text = dialogue.name;//person's name
 
         sentences.Clear();
@@ -57,17 +60,33 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         string sentence = sentences.Dequeue();
-        Debug.Log(sentence);//show the sentence
 
-        dialogueText.text = sentence;
+        StopAllCoroutines();
+
+        //type letters 1 by 1 on screen
+        StartCoroutine(TypeSentence(sentence));
+
+        Debug.Log(sentence);//show the sentence
     }
 
+    IEnumerator TypeSentence(string sentence)
+    {
+        dialogueText.text = "";
+        foreach(char letter in sentence.ToCharArray())
+        {
+            dialogueText.text += letter;
+            yield return null;
+        }
+    }
     public void EndDialogue()
     {
         //make dialogue box lower and disappear
         //also need to un-freeze player motion
         Debug.Log("end of conversation");
-        dialogueBox.SetActive(false);
+
+        D_animator.SetBool("IsOpen", false);
         freezescript.Unfreeze();
+
+        //add logic here to spawn input window maybe
     }
 }
