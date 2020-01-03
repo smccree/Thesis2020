@@ -28,11 +28,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
-        private Camera m_Camera;
-        private bool m_Jump;
+        private Camera m_Camera;                                  //marked 2 variables as public to freeze player
+        private bool m_Jump;                                      //m_Input and m_MoveDir
         private float m_YRotation;
-        private Vector2 m_Input;
-        private Vector3 m_MoveDir = Vector3.zero;
+        public Vector2 m_Input;
+        public Vector3 m_MoveDir = Vector3.zero;
         private CharacterController m_CharacterController;
         private CollisionFlags m_CollisionFlags;
         private bool m_PreviouslyGrounded;
@@ -41,6 +41,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+
+        //interacting with objects
+        public GameObject obj;
+        public bool hasObj;
 
         // Use this for initialization
         private void Start()
@@ -78,6 +82,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
             {
                 m_MoveDir.y = 0f;
+            }
+
+            //added for object interaction keys
+            if(Input.GetMouseButtonDown(1))
+            {
+                //1: check if we hit an interactable
+                //2: if we hit an interactable, use it (call method)
+                
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;

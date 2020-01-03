@@ -11,13 +11,14 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text nameText;
     public TMP_Text dialogueText;
     public GameObject dialogueBox;
-    public FreezePlayer freezescript;
+    public PlayerMovement freezescript;
     public Animator D_animator;
 
     //Input Window Variables:
     public GameObject inputWindow;
-    public TMP_Text inputText;
+    public TMP_InputField inputText;
     public Animator I_animator;
+    private string userInput;
 
     //building simple dialogue system to start - added complexity l8r
     //I do need this
@@ -38,7 +39,7 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("Starting conversation with " + dialogue.name);
 
-        freezescript.Freeze();
+        freezescript.isFrozen = true;
         D_animator.SetBool("IsOpen", true); //open dialogue box animation
 
         nameText.text = dialogue.name;//person's name
@@ -54,6 +55,8 @@ public class DialogueManager : MonoBehaviour
     public void DisplayNextSentence()
     {
         //check to see if there are more sentences to show
+        Debug.Log(sentences.Count);
+
         if (sentences.Count == 0)
         {
             EndDialogue(); //no more sentences so close dialogue box
@@ -85,8 +88,34 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("end of conversation");
 
         D_animator.SetBool("IsOpen", false);
-        freezescript.Unfreeze();
+        freezescript.isFrozen = false;
 
         //add logic here to spawn input window maybe
+        // OpenInputWindow();
+    }
+
+    public void ReceiveInput()
+    {
+        //function to receive input from the text input window
+        //save characters as player dialogue line
+
+        string playerText = inputText.text;
+        Debug.Log(playerText); //testing
+
+        userInput = playerText;
+        Debug.Log(userInput);
+
+        CloseInputWindow();
+    }
+
+    public void CloseInputWindow()
+    {
+        I_animator.SetBool("IsOpen", false);
+        freezescript.isFrozen = false;
+    }
+    public void OpenInputWindow()
+    {
+        I_animator.SetBool("IsOpen", true);
+        freezescript.isFrozen = true;
     }
 }
