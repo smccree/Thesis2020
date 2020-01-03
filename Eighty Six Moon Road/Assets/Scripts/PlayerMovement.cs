@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //this might b an unnecessary script
+
     //freeze player movmement for dialogue system
     //all of this is called internally by the dialogue manager system
     public UnityStandardAssets.Characters.FirstPerson.FirstPersonController fps;
@@ -13,10 +15,9 @@ public class PlayerMovement : MonoBehaviour
         //check each frame if player should be frozen
         if (isFrozen == true)
         {
-            fps.m_Input = Vector2.zero;
-            fps.m_MoveDir = Vector3.zero;
+            fps.canMove = false;
         }
-        Debug.Log(isFrozen);
+        //Debug.Log(isFrozen);
     }
     private void Freeze()
     {

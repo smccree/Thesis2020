@@ -11,14 +11,13 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text nameText;
     public TMP_Text dialogueText;
     public GameObject dialogueBox;
-    public PlayerMovement freezescript;
     public Animator D_animator;
 
     //Input Window Variables:
-    public GameObject inputWindow;
-    public TMP_InputField inputText;
-    public Animator I_animator;
-    private string userInput;
+    public InputManager inputManager;
+
+    //Access to FPS character controller movement script
+    public UnityStandardAssets.Characters.FirstPerson.FirstPersonController fps;
 
     //building simple dialogue system to start - added complexity l8r
     //I do need this
@@ -28,7 +27,6 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //dialogueBox.SetActive(false);
         sentences = new Queue<string>();
     }
     //steps to do this:
@@ -39,7 +37,7 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("Starting conversation with " + dialogue.name);
 
-        freezescript.isFrozen = true;
+        fps.canMove = false;
         D_animator.SetBool("IsOpen", true); //open dialogue box animation
 
         nameText.text = dialogue.name;//person's name
@@ -81,41 +79,17 @@ public class DialogueManager : MonoBehaviour
             yield return null;
         }
     }
-    public void EndDialogue()
+    private void EndDialogue()
     {
         //make dialogue box lower and disappear
         //also need to un-freeze player motion
         Debug.Log("end of conversation");
 
         D_animator.SetBool("IsOpen", false);
-        freezescript.isFrozen = false;
 
         //add logic here to spawn input window maybe
-        // OpenInputWindow();
-    }
+        inputManager.Activate();
 
-    public void ReceiveInput()
-    {
-        //function to receive input from the text input window
-        //save characters as player dialogue line
-
-        string playerText = inputText.text;
-        Debug.Log(playerText); //testing
-
-        userInput = playerText;
-        Debug.Log(userInput);
-
-        CloseInputWindow();
-    }
-
-    public void CloseInputWindow()
-    {
-        I_animator.SetBool("IsOpen", false);
-        freezescript.isFrozen = false;
-    }
-    public void OpenInputWindow()
-    {
-        I_animator.SetBool("IsOpen", true);
-        freezescript.isFrozen = true;
+        fps.canMove = true;
     }
 }
