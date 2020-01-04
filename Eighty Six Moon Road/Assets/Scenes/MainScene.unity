@@ -762,7 +762,7 @@ MonoBehaviour:
   dialogueText: {fileID: 320919313}
   dialogueBox: {fileID: 1355964145}
   D_animator: {fileID: 1355964150}
-  inputManager: {fileID: 1625485240}
+  inputManager: {fileID: 1288370322}
   fps: {fileID: 576016372}
 --- !u!1 &628668057
 GameObject:
@@ -1052,7 +1052,7 @@ MonoBehaviour:
   dialogueText: {fileID: 320919313}
   dialogueBox: {fileID: 1355964145}
   D_animator: {fileID: 1355964150}
-  inputManager: {fileID: 1625485240}
+  inputManager: {fileID: 0}
   fps: {fileID: 576016372}
 --- !u!114 &752910890
 MonoBehaviour:
@@ -1559,8 +1559,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1288370320}
   - {fileID: 2025170840}
+  - {fileID: 1288370320}
   - {fileID: 1355964146}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -1739,6 +1739,7 @@ GameObject:
   - component: {fileID: 1081371455}
   - component: {fileID: 1081371461}
   - component: {fileID: 1081371459}
+  - component: {fileID: 1081371460}
   m_Layer: 0
   m_Name: WeightedCompanionCube
   m_TagString: interactable
@@ -1813,7 +1814,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081371454}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 3.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1832,6 +1833,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1081371460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081371454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db74116071e573e4b9a2ffb663636530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Test Cube
+    sentences:
+    - Hello there! Welcome to the game! This is a test for the dialogue system. Press
+      Enter to Continue....
+    - Great job! This dialogue will be spoken by the Voice NPC. The player can respond
+      when prompted by the dialogue window.
+    - The input window before you will allow you to type your response. Press Left
+      Control to submit your response and close the input window.
 --- !u!54 &1081371461
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1882,7 +1904,7 @@ RectTransform:
   - {fileID: 1559565457}
   - {fileID: 2003691690}
   m_Father: {fileID: 943229047}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1923,7 +1945,7 @@ MonoBehaviour:
   inputWindow: {fileID: 1288370319}
   inputText: {fileID: 1559565458}
   I_animator: {fileID: 1288370321}
-  fps: {fileID: 576016372}
+  dialogueBox: {fileID: 616974860}
 --- !u!114 &1288370323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2146,7 +2168,7 @@ MonoBehaviour:
   dialogueText: {fileID: 320919313}
   dialogueBox: {fileID: 1355964145}
   D_animator: {fileID: 1355964150}
-  inputManager: {fileID: 0}
+  inputManager: {fileID: 1288370322}
   fps: {fileID: 576016372}
 --- !u!95 &1355964150
 Animator:
@@ -2525,7 +2547,7 @@ MonoBehaviour:
   inputWindow: {fileID: 1288370319}
   inputText: {fileID: 1559565458}
   I_animator: {fileID: 1288370321}
-  fps: {fileID: 576016372}
+  dialogueBox: {fileID: 1355964149}
 --- !u!4 &1625485241
 Transform:
   m_ObjectHideFlags: 0
@@ -2552,7 +2574,6 @@ GameObject:
   - component: {fileID: 1724135099}
   - component: {fileID: 1724135098}
   - component: {fileID: 1724135097}
-  - component: {fileID: 1724135095}
   - component: {fileID: 1724135101}
   - component: {fileID: 1724135096}
   m_Layer: 0
@@ -2562,20 +2583,6 @@ GameObject:
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
   m_IsActive: 1
---- !u!114 &1724135095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1724135094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a375d339c261ade419ff52914bc871d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentobj: {fileID: 0}
-  radius: 3
 --- !u!135 &1724135096
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3047,7 +3054,7 @@ MonoBehaviour:
   inputWindow: {fileID: 1288370319}
   inputText: {fileID: 1559565458}
   I_animator: {fileID: 1288370321}
-  fps: {fileID: 576016372}
+  dialogueBox: {fileID: 1355964149}
 --- !u!114 &2003691692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3150,7 +3157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f2a9854d9af9c4abe7333c948a7c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  click: 13
+  click: 306
 --- !u!1 &2025170839
 GameObject:
   m_ObjectHideFlags: 0
@@ -3171,7 +3178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2025170840
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3179,13 +3186,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025170839}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1.5000001, y: 1.4999999, z: 1}
   m_Children:
   - {fileID: 1057917773}
   m_Father: {fileID: 943229047}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

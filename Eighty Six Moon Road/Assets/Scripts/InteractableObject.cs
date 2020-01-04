@@ -64,8 +64,7 @@ public class InteractableObject : MonoBehaviour
         //do an interaction here, usually pop up a reading/description, spawn dialogue etc.
         Debug.Log("Interacted with " + currentobj.name);
 
-        //temporarily destroy object as interaction
-        Destroy(currentobj);
+        currentobj.GetComponent<DialogueTrigger>().TriggerDialogue();
 
         //Theory here: delineate an action based on the object's name
         //poss: too many objects

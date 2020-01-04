@@ -79,7 +79,7 @@ public class DialogueManager : MonoBehaviour
             yield return null;
         }
     }
-    private void EndDialogue()
+    public void EndDialogue()
     {
         //make dialogue box lower and disappear
         //also need to un-freeze player motion
@@ -88,8 +88,12 @@ public class DialogueManager : MonoBehaviour
         D_animator.SetBool("IsOpen", false);
 
         //add logic here to spawn input window maybe
-        inputManager.Activate();
+        inputManager.OpenInputWindow();
+        fps.canMove = false;
+    }
 
+    public void Unfreeze() //separate this into a method for testing reasons
+    {
         fps.canMove = true;
     }
 }

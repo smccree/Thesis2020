@@ -12,40 +12,34 @@ public class InputManager : MonoBehaviour
     public Animator I_animator;
     private string userInput;
 
-    //Access to FPS character controller movement script
-    public UnityStandardAssets.Characters.FirstPerson.FirstPersonController fps;
+    public DialogueManager dialogueBox;
 
-    public void Activate()
-    {
-        //start up script for input window functionality
-        Debug.Log("Opening Input Window");
-        OpenInputWindow();
-        
-
-    }
     public void ReceiveInput()
     {
         //function to receive input from the text input window
         //save characters as player dialogue line
 
         string playerText = inputText.text;
-        Debug.Log(playerText); //testing
 
         userInput = playerText;
+        inputText.text = null;
+
         Debug.Log(userInput);
 
         CloseInputWindow();
+        dialogueBox.Unfreeze();
     }
 
-    private void CloseInputWindow()
+    public void CloseInputWindow()
     {
         I_animator.SetBool("IsOpen", false);
-        //fps.canMove = true;
+        inputWindow.SetActive(false);
     }
 
-    private void OpenInputWindow()
+    public void OpenInputWindow()
     {
+        Debug.Log("Opening Input Window");
+        inputWindow.SetActive(true);
         I_animator.SetBool("IsOpen", true);
-        //fps.canMove = false;
     }
 }
