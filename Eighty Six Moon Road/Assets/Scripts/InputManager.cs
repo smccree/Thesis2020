@@ -32,7 +32,7 @@ public class InputManager : MonoBehaviour
 
     public void CloseInputWindow()
     {
-        I_animator.SetBool("IsOpen", false);
+        I_animator.SetBool("IsOpen", false); //need set active = false to stop it from reading keyboard button presses
         inputWindow.SetActive(false);
     }
 

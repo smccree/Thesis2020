@@ -47,6 +47,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         //can the player move? - for pause functionality + dialogue system scripting
         public bool canMove;
+        public bool typing;  //for cursor lock/cursor visibility
 
         // Use this for initialization
         private void Start()
@@ -143,6 +144,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 UpdateCameraPosition(speed);
 
                 m_MouseLook.UpdateCursorLock();
+                
+                
 
             }
             

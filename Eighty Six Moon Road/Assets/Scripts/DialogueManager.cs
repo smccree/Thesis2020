@@ -37,7 +37,8 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("Starting conversation with " + dialogue.name);
 
-        fps.canMove = false;
+        fps.canMove = false; //pause movement
+
         D_animator.SetBool("IsOpen", true); //open dialogue box animation
 
         nameText.text = dialogue.name;//person's name
@@ -95,5 +96,6 @@ public class DialogueManager : MonoBehaviour
     public void Unfreeze() //separate this into a method for testing reasons
     {
         fps.canMove = true;
+        fps.typing = false; //hide cursor now that dialogue stuff is done
     }
 }
