@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InteractableObject : MonoBehaviour
 {
@@ -9,7 +10,10 @@ public class InteractableObject : MonoBehaviour
 
     //Defines interactable objects
     public GameObject currentobj = null; //object we are currently interacting with
+    public Image popup = null; //popup UI Image
     //public GameObject label = null; //label for interactive object
+
+    public UnityStandardAssets.Characters.FirstPerson.FirstPersonController fps;
 
     public float radius = 3f;
 
@@ -63,9 +67,32 @@ public class InteractableObject : MonoBehaviour
     {
         //do an interaction here, usually pop up a reading/description, spawn dialogue etc.
         Debug.Log("Interacted with " + currentobj.name);
-
-        currentobj.GetComponent<DialogueTrigger>().TriggerDialogue();
-
+        
+        //added to script to account for opening doors (doors will not close after being opened)
+        if (currentobj.name == "FrontDoor")
+        {
+            currentobj.GetComponent<Door_Script>().OpenDoor();
+        }
+        else if (currentobj.name == "Door")
+        {
+            //for now: blip out of existence (animation transform for front door doesn't work)
+            currentobj.SetActive(false);
+        }
+        else if(currentobj.name.Contains("Note"))
+        {
+            //for each note 1 - 10 (or however many) display pop-up text
+            if(currentobj.name == "Note_1")
+            {
+                //text pop up? image?
+                popup = currentobj.GetComponent<Image>();
+                showPopup(popup);
+            }
+        }
+        else
+        {
+            currentobj.GetComponent<DialogueTrigger>().TriggerDialogue();
+        }
+       
         //Theory here: delineate an action based on the object's name
         //poss: too many objects
         //nested loops
@@ -84,5 +111,17 @@ public class InteractableObject : MonoBehaviour
         //    } (etcetera)
         }
 
+    public void showPopup(Image popup)
+    {
+        //show the popup on screen and pause player controls as in dialogue/input window system
+        
+        //1: show popup on screen
+        Animator popup_anim = popup.GetComponent<Animator>();
+        popup_anim.SetBool("isOpen", true);
 
+        //2: pause player movement, camera
+        fps.canMove = false;
     }
+
+
+}
