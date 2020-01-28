@@ -28,6 +28,8 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>();
+        //set dialogue box as inactive from start
+        dialogueBox.SetActive(false);
     }
     //steps to do this:
     //1: pause player movement (enter key + keyboard type become active)
@@ -38,7 +40,7 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("Starting conversation with " + dialogue.name);
 
         fps.canMove = false; //pause movement
-
+        dialogueBox.SetActive(true);
         D_animator.SetBool("IsOpen", true); //open dialogue box animation
 
         nameText.text = dialogue.name;//person's name
@@ -88,8 +90,10 @@ public class DialogueManager : MonoBehaviour
 
         D_animator.SetBool("IsOpen", false);
 
-        //add logic here to spawn input window maybe
+        //open input window
         inputManager.OpenInputWindow();
+        //disable dialoguebox for button controls
+        dialogueBox.SetActive(false);
         fps.canMove = false;
     }
 
