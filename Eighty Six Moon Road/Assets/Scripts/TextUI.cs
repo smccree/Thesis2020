@@ -10,8 +10,13 @@ public class TextUI : MonoBehaviour
     */
 
     public Image popup; //image to display
+    public GameObject label; //object label/description
     public UnityStandardAssets.Characters.FirstPerson.FirstPersonController fps; //for pausing player movement
 
+    public void Start()
+    {
+        label.SetActive(false); //initialize hiding on start
+    }
     public void ShowTextUI()
     {
         popup.GetComponent<Animator>().SetBool("isOpen", true);
@@ -24,5 +29,15 @@ public class TextUI : MonoBehaviour
         popup.GetComponent<Animator>().SetBool("isOpen", false);
         fps.canMove = true;
         fps.m_MouseLook.lockCursor = true;
+    }
+
+    public void ShowLabel()
+    {
+        label.SetActive(true);
+    }
+
+    public void HideLabel()
+    {
+        label.SetActive(false);
     }
 }

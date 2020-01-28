@@ -10,57 +10,52 @@ public class InteractableObject : MonoBehaviour
 
     //Defines interactable objects
     public GameObject currentobj = null; //object we are currently interacting with
-
-    //public GameObject label = null; //label for interactive object
-
-    public float radius = 3f;
-
-    private void OnDrawGizmosSelected()
-    {
-        //visualize interaction radius
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, radius);
-    }
+    public float rayDistance = 3f; //maximum distance for raycast hit
+    public LayerMask interactLayer; //only shoot rays at interactables
+    public bool interacting;
+    public bool label; //there is or isn't a label on screen
 
     public void Update()
     {
-        if (Input.GetMouseButtonDown(1)) //if we are pressing the button
+        //raycasting scripting
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit; //the thing we hit
+
+        //if ray hits something within the interact distance
+        if(Physics.Raycast(ray, out hit, rayDistance, interactLayer))
         {
-            if (currentobj)
+            currentobj = hit.collider.gameObject;
+            Debug.Log(currentobj.name);
+            if (currentobj.CompareTag("interactable"))
             {
+                currentobj.GetComponent<TextUI>().ShowLabel(); //display label
+                label = true;
+            }
+            
+            if (Input.GetMouseButtonDown(1) && interacting == false) //if we are pressing the button
+            {
+                if(label == true)
+                {
+                    currentobj.GetComponent<TextUI>().HideLabel(); //hide label once started interacting
+                    label = false;
+                }
+                
+                interacting = true;
                 Interact(currentobj); //interact with current object
             }
         }
-    }
-
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.CompareTag("interactable"))
+        else
         {
-            Debug.Log(collision.name);
-            currentobj = collision.gameObject; //player is in range of interactable object
-
-            //commented out: make label appear when in radius
-            //label = currentobj.label;
-            //label.SetActive(true);
-        }
-    }
-
-    private void OnTriggerExit(Collider collision)
-    {
-        if (collision.CompareTag("interactable"))
-        {
-            if (collision.gameObject == currentobj)
+            if(label == true)
             {
-                currentobj = null; //player has walked out of range of interactable object
-                Debug.Log(currentobj);
-
-                //label.SetActive(false); //label disappears again
-                //label = null; //no current label
+                currentobj.GetComponent<TextUI>().HideLabel();
+                label = false;
             }
-
+            currentobj = null;
+            Debug.Log(currentobj);
         }
     }
+
     public void Interact(GameObject currentobj)
     {
         //do an interaction here, usually pop up a reading/description, spawn dialogue etc.
@@ -84,5 +79,6 @@ public class InteractableObject : MonoBehaviour
         {
             currentobj.GetComponent<DialogueTrigger>().TriggerDialogue();
         }
+        interacting = false; //done interacting
     }
 }
