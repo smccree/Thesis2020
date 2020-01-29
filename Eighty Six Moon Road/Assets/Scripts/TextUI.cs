@@ -11,7 +11,21 @@ public class TextUI : MonoBehaviour
 
     public Image popup; //image to display
     public GameObject label; //object label/description
-    public UnityStandardAssets.Characters.FirstPerson.FirstPersonController fps; //for pausing player movement
+    public UnityStandardAssets.Characters.FirstPerson.FirstPersonController
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+   fps; //for pausing player movement
 
     public void Start()
     {

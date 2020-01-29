@@ -13,7 +13,7 @@ public class DrawCharacter : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, player.radius);
     }
-    /*void OnDrawGizmos()
+    void OnDrawGizmos()
         {
             CharacterController cc = GetComponent<CharacterController>();
             Gizmos.color = Color.yellow;
@@ -22,6 +22,6 @@ public class DrawCharacter : MonoBehaviour
                 Gizmos.DrawWireCube(transform.position, new Vector3(cc.radius * 2, cc.height, cc.radius * 2));
             else //if (cc.radius * 2 > cc.height || cc.radius * 2 == cc.height)
                 Gizmos.DrawWireSphere(transform.position, cc.radius);
-        }*/
+        }
 
 }
