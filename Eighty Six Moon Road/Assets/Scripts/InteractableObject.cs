@@ -75,6 +75,10 @@ public class InteractableObject : MonoBehaviour
         {
             currentobj.GetComponent<TextUI>().ShowTextUI();
         }
+        else if(currentobj.name == "Locked")
+        {
+            Debug.Log("Locked, huh? I wonder what must be inside.");
+        }
         else
         {
             currentobj.GetComponent<DialogueTrigger>().TriggerDialogue();
