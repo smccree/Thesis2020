@@ -6,17 +6,22 @@ using UnityEngine.UI;
 public class MyPauseMenu : MonoBehaviour
 {
     public static bool isPaused = false;
-    public bool canPause = true;
+    public bool canPause;
     public GameObject menu;
     public UnityStandardAssets.Characters.FirstPerson.FirstPersonController fps;
 
     private void Start()
     {
         menu.SetActive(false);
+        canPause = true;
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if(fps.canMove == true)
+        {
+            canPause = true; //quick fixing - after dialogue system closes won't let you pause for some reason
+        }
+        if (Input.GetKeyDown(KeyCode.Tab) && canPause == true)
         {
             if(isPaused == true)
             {
@@ -36,7 +41,7 @@ public class MyPauseMenu : MonoBehaviour
         fps.canMove = false;
     }
 
-    void ResumeGame()
+    public void ResumeGame()
     {
         menu.SetActive(false);
         isPaused = false;

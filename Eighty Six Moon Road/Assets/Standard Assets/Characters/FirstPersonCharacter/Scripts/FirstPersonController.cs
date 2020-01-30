@@ -65,6 +65,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             //added
             canMove = true;
+            isLock = true;
         }
 
 
@@ -111,6 +112,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //put in if statement condition - if canMove == true, do below stuff.
             if(canMove == true)
             {
+                m_MouseLook.SetCursorLock(true); //added
+
                 float speed;
                 GetInput(out speed);
                 // always move along the camera forward as it is the direction that it being aimed at
@@ -149,9 +152,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                 m_MouseLook.UpdateCursorLock();
             }
-            if (isLock == false)
+            else
             {
-                m_MouseLook.lockCursor = false;
+                m_MouseLook.SetCursorLock(false);
             }
 
         }

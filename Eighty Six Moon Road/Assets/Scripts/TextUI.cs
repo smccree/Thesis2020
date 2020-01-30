@@ -8,31 +8,19 @@ public class TextUI : MonoBehaviour
     /* functionality to display a pop up UI image/text associated with an interactable
         used for Notes, objects, etc.
     */
-
+    public GameObject panel; //screen overlay - we're in reading mode
     public Image popup; //image to display
     public GameObject label; //object label/description
-    public UnityStandardAssets.Characters.FirstPerson.FirstPersonController
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-   fps; //for pausing player movement
+    public UnityStandardAssets.Characters.FirstPerson.FirstPersonController fps; //for pausing player movement
 
     public void Start()
     {
+        panel.SetActive(false);
         label.SetActive(false); //initialize hiding on start
     }
     public void ShowTextUI()
     {
+        panel.SetActive(true);
         popup.GetComponent<Animator>().SetBool("isOpen", true);
         fps.canMove = false;
         fps.m_MouseLook.lockCursor = false;
