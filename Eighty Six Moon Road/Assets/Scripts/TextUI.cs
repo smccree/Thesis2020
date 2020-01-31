@@ -18,8 +18,23 @@ public class TextUI : MonoBehaviour
         panel.SetActive(false);
         label.SetActive(false); //initialize hiding on start
     }
+
+    /*private void Update()
+    {
+        //check every frame if label should be false
+        bool labelsetting = fps.GetComponent<InteractableObject>().label;
+        if (labelsetting == true)
+        {
+            ShowLabel();
+        }
+        else
+        {
+            HideLabel();
+        }
+    }*/
     public void ShowTextUI()
     {
+        
         panel.SetActive(true);
         popup.GetComponent<Animator>().SetBool("isOpen", true);
         fps.canMove = false;
@@ -28,18 +43,24 @@ public class TextUI : MonoBehaviour
 
     public void HideTextUI()
     {
+
+        panel.SetActive(false);
         popup.GetComponent<Animator>().SetBool("isOpen", false);
         fps.canMove = true;
         fps.m_MouseLook.lockCursor = true;
+
+        //ShowLabel();
     }
 
     public void ShowLabel()
     {
+        Debug.Log("showing label" + label.name);
         label.SetActive(true);
     }
 
     public void HideLabel()
     {
+        Debug.Log("hiding label: " + label.name);
         label.SetActive(false);
     }
 }

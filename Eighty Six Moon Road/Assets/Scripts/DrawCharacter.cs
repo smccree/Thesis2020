@@ -11,7 +11,7 @@ public class DrawCharacter : MonoBehaviour
     {
         player = fps.GetComponent<CharacterController>();
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, player.radius);
+        //Gizmos.DrawWireSphere(transform.position, player.radius);
     }
     void OnDrawGizmos()
         {

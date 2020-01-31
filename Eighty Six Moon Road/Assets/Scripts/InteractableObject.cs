@@ -10,56 +10,56 @@ public class InteractableObject : MonoBehaviour
 
     //Defines interactable objects
     public GameObject currentobj = null; //object we are currently interacting with
-    public float rayDistance = 3f; //maximum distance for raycast hit
+    private float rayDistance = 5f; //maximum distance for raycast hit
     public LayerMask interactLayer; //only shoot rays at interactables
     public bool interacting;
     public bool label; //there is or isn't a label on screen
 
+    private void Start()
+    {
+        interacting = false;
+        label = false;
+    }
     public void Update()
     {
+        
+        // Debug.Log(currentobj);
+
         //raycasting scripting
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit; //the thing we hit
 
         //if ray hits something within the interact distance
-        if(Physics.Raycast(ray, out hit, rayDistance, interactLayer))
+        if (Physics.Raycast(ray, out hit, rayDistance, interactLayer))
         {
             currentobj = hit.collider.gameObject;
-            Debug.Log(currentobj.name);
-            if (currentobj.CompareTag("interactable"))
+
+            //bugged! Label won't disappear when you look away :( instead they stay open forever :(((
+            /*
+            if (currentobj.CompareTag("interactable") == true)
             {
-                currentobj.GetComponent<TextUI>().ShowLabel(); //display label
-                label = true;
-            }
-            
-            if (Input.GetMouseButtonDown(1) && interacting == false) //if we are pressing the button
+                currentobj.GetComponent<TextUI>().ShowLabel();
+            }*/
+            //Debug.Log(currentobj.name);
+
+            if (Input.GetMouseButtonDown(1) && interacting == false)
             {
-                if(label == true)
-                {
-                    currentobj.GetComponent<TextUI>().HideLabel(); //hide label once started interacting
-                    label = false;
-                }
-                
+
                 interacting = true;
-                Interact(currentobj); //interact with current object
+                Interact(currentobj);
+                
             }
+            //reseting
         }
-        else
-        {
-            if(label == true)
-            {
-                currentobj.GetComponent<TextUI>().HideLabel();
-                label = false;
-            }
-            currentobj = null;
-            Debug.Log(currentobj);
-        }
+        currentobj = null;
+
+        //Debug.Log(currentobj);
     }
 
     public void Interact(GameObject currentobj)
     {
         //do an interaction here, usually pop up a reading/description, spawn dialogue etc.
-        Debug.Log("Interacted with " + currentobj.name);
+        //Debug.Log("Interacted with " + currentobj.name);
         
         //added to script to account for opening doors (doors will not close after being opened)
         if (currentobj.name == "FrontDoor")
@@ -73,15 +73,24 @@ public class InteractableObject : MonoBehaviour
         }
         else if(currentobj.name.Contains("Note"))
         {
+            currentobj.GetComponent<TextUI>().HideLabel();
+            label = false;
             currentobj.GetComponent<TextUI>().ShowTextUI();
         }
         else if(currentobj.name == "Locked")
         {
             Debug.Log("Locked, huh? I wonder what must be inside.");
         }
+        else if(currentobj.name.Contains("LoreCube"))
+        {
+            currentobj.GetComponent<TextUI>().HideLabel();
+            label = false;
+            currentobj.GetComponent<TextUI>().ShowTextUI();
+        }
         else
         {
-            currentobj.GetComponent<DialogueTrigger>().TriggerDialogue();
+            Debug.Log("doing nothing.");
+            //currentobj.GetComponent<DialogueTrigger>().TriggerDialogue();
         }
         interacting = false; //done interacting
     }
