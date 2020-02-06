@@ -87,11 +87,21 @@ public class InteractableObject : MonoBehaviour
             label = false;
             currentobj.GetComponent<TextUI>().ShowTextUI();
             currentobj.GetComponent<LoreObject>().interacted = true;
+            Debug.Log("interacted with lorecube");
+        }
+        else if(currentobj.name.Contains("Convo") || currentobj.name.Contains("FinalCube"))
+        {
+            //only use once
+            if(currentobj.GetComponent<ConversationObject>().interacted == false)
+            {
+                currentobj.GetComponent<ConversationTrigger>().TriggerDialogue();
+                Debug.Log("interacted with convo cube");
+                currentobj.GetComponent<ConversationObject>().interacted = true;
+            } 
         }
         else
         {
-            //Debug.Log("doing nothing.");
-           currentobj.GetComponent<ConversationTrigger>().TriggerDialogue();
+            Debug.Log("doing nothing.");
         }
         interacting = false; //done interacting
     }

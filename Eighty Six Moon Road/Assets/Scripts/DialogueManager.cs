@@ -43,7 +43,8 @@ public class DialogueManager : MonoBehaviour
 
         fps.canMove = false; //pause movement
         menu.canPause = false; //can't pause
-        //dialogueBox.SetActive(true);
+       
+        //dialogueBox.SetActive(true); //just in case it's inactive and we can't use it again
         
         //temporarily disable while dialogue window is open
         inputManager.inputWindow.SetActive(false);
@@ -64,6 +65,11 @@ public class DialogueManager : MonoBehaviour
         //check to see if there are more sentences to show
         Debug.Log(sentences.Count);
 
+        //adding this - not sure if it works
+        /*while (sentences.Count > 0)
+        {
+
+        }*/
         if (sentences.Count == 0)
         {
             EndDialogue(); //no more sentences so close dialogue box
@@ -110,6 +116,16 @@ public class DialogueManager : MonoBehaviour
         fps.canMove = true;
         fps.isLock = true; //hide cursor now that dialogue stuff is done
         menu.canPause = true; //game can pause again
+
+        //comment if bugged
+        dialogueBox.SetActive(true);
+        D_animator.SetBool("IsOpen", false);
+    }
+
+    public void GetPlayerInput()
+    {
+        //(supposedly) after unloading / displaying a sentence the player should be able to respond in the input window
+
     }
 
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           

@@ -15,7 +15,7 @@ public class DialoguePopup : MonoBehaviour
     private string sentence; //the dialogue line (don't need a queue since all pop ups will be 1 sentence)
     private int count; //countdown time while count > 0
     private bool popup_isopen;
-    void Awake()
+    void Start()
     {
         popupDialogueBox.SetActive(false);
     }

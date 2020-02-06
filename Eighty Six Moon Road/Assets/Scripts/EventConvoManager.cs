@@ -13,7 +13,7 @@ public class EventConvoManager : MonoBehaviour
 
     private void Start()
     {
-        //used = false;
+        
         trigger.SetActive(false);
     }
     void Update()
@@ -22,29 +22,12 @@ public class EventConvoManager : MonoBehaviour
         //then set 'used' to true so that it will stop checking.
 
         //if(used == false) {
-        Debug.Log("checking status...");
+        //Debug.Log("checking status...");
         if (loreA.GetComponent<LoreObject>().interacted == true && loreB.GetComponent<LoreObject>().interacted == true)
         {
             trigger.SetActive(true);
-            /*Debug.Log("triggering conversation....");
-            trigger.GetComponent<ConversationTrigger>().TriggerDialogue();
-            used = true;*/
+            
         }
-        //}
         
     }
-
-    /*public void CheckforConvo()
-    {
-        if (used == false)
-        {
-
-            if (loreA.GetComponent<LoreObject>().interacted == true && loreB.GetComponent<LoreObject>().interacted == true)
-            {
-                Debug.Log("triggering conversation....");
-                trigger.GetComponent<ConversationTrigger>().TriggerDialogue();
-                used = true;
-            }
-        }
-    }*/
 }

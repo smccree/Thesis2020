@@ -51,14 +51,6 @@ public class TextUI : MonoBehaviour
         fps.m_MouseLook.lockCursor = true;
 
         //ShowLabel();
-
-        //if we haven't already interacted with this object before
-        /*if(loreobj.GetComponent<LoreObject>().interacted == false)
-        {
-            Debug.Log("interacted with this once.");
-            loreobj.GetComponent<LoreObject>().interacted = true; //set as true so we know we've clicked / closed it before.
-            //eventtrigger.GetComponent<EventConvoManager>().CheckforConvo();
-        }*/
     }
 
     public void ShowLabel()
