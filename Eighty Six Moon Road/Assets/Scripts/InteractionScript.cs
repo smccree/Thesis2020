@@ -14,8 +14,6 @@ public class InteractionScript : MonoBehaviour
     //the button we're trying to click
     private Button button;
 
-    
-    // Start is called before the first frame update
     void Awake()
     {
         //get the current button or interactable obj. --> assign to variable on initialization

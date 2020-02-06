@@ -86,11 +86,12 @@ public class InteractableObject : MonoBehaviour
             currentobj.GetComponent<TextUI>().HideLabel();
             label = false;
             currentobj.GetComponent<TextUI>().ShowTextUI();
+            currentobj.GetComponent<LoreObject>().interacted = true;
         }
         else
         {
-            Debug.Log("doing nothing.");
-            //currentobj.GetComponent<DialogueTrigger>().TriggerDialogue();
+            //Debug.Log("doing nothing.");
+           currentobj.GetComponent<ConversationTrigger>().TriggerDialogue();
         }
         interacting = false; //done interacting
     }

@@ -12,7 +12,8 @@ public class TextUI : MonoBehaviour
     public Image popup; //image to display
     public GameObject label; //object label/description
     public UnityStandardAssets.Characters.FirstPerson.FirstPersonController fps; //for pausing player movement
-
+    public GameObject loreobj; //the lore object this text ui is tied to
+    //public GameObject eventtrigger; //conversation trigger (when interactables have been clicked and closed)
     public void Start()
     {
         panel.SetActive(false);
@@ -50,6 +51,14 @@ public class TextUI : MonoBehaviour
         fps.m_MouseLook.lockCursor = true;
 
         //ShowLabel();
+
+        //if we haven't already interacted with this object before
+        /*if(loreobj.GetComponent<LoreObject>().interacted == false)
+        {
+            Debug.Log("interacted with this once.");
+            loreobj.GetComponent<LoreObject>().interacted = true; //set as true so we know we've clicked / closed it before.
+            //eventtrigger.GetComponent<EventConvoManager>().CheckforConvo();
+        }*/
     }
 
     public void ShowLabel()

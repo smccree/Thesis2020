@@ -10,7 +10,7 @@ public class MyPauseMenu : MonoBehaviour
     public GameObject menu;
     public UnityStandardAssets.Characters.FirstPerson.FirstPersonController fps;
 
-    private void Start()
+    private void Awake()
     {
         menu.SetActive(false);
         canPause = true;

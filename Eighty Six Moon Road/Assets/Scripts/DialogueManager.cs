@@ -23,7 +23,6 @@ public class DialogueManager : MonoBehaviour
     public MyPauseMenu menu;
 
     //building simple dialogue system to start - added complexity l8r
-    //I do need this
     //empty queue to add sentences to
     private Queue<string> sentences; 
 
@@ -32,7 +31,7 @@ public class DialogueManager : MonoBehaviour
     {
         sentences = new Queue<string>();
         //set dialogue box as inactive from start
-        dialogueBox.SetActive(false);
+        //dialogueBox.SetActive(false);
     }
     //steps to do this:
     //1: pause player movement (enter key + keyboard type become active)
@@ -44,7 +43,10 @@ public class DialogueManager : MonoBehaviour
 
         fps.canMove = false; //pause movement
         menu.canPause = false; //can't pause
-        dialogueBox.SetActive(true);
+        //dialogueBox.SetActive(true);
+        
+        //temporarily disable while dialogue window is open
+        inputManager.inputWindow.SetActive(false);
         D_animator.SetBool("IsOpen", true); //open dialogue box animation
 
         nameText.text = dialogue.name;//person's name
@@ -95,6 +97,7 @@ public class DialogueManager : MonoBehaviour
         D_animator.SetBool("IsOpen", false);
 
         //open input window
+        inputManager.inputWindow.SetActive(true);
         inputManager.OpenInputWindow();
         fps.isLock = false;
         //disable dialoguebox for button controls
@@ -108,4 +111,5 @@ public class DialogueManager : MonoBehaviour
         fps.isLock = true; //hide cursor now that dialogue stuff is done
         menu.canPause = true; //game can pause again
     }
+
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           

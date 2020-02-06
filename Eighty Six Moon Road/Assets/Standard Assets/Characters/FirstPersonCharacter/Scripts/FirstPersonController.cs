@@ -48,8 +48,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
         //can the player move? - for pause functionality + dialogue system scripting
         public bool canMove;
         public bool isLock;  //for cursor lock/cursor visibility
-
+        public GameObject reticle; //visualize where player is looking
         // Use this for initialization
+
+        private void Awake()
+        {
+            reticle.SetActive(true); //view reticle
+        }
         private void Start()
         {
             m_CharacterController = GetComponent<CharacterController>();
@@ -112,6 +117,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //put in if statement condition - if canMove == true, do below stuff.
             if(canMove == true)
             {
+                reticle.SetActive(true); //view reticle while moving around
                 m_MouseLook.SetCursorLock(true); //added
 
                 float speed;
@@ -155,6 +161,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             else
             {
                 m_MouseLook.SetCursorLock(false);
+                reticle.SetActive(false); //hide reticle while paused
             }
 
         }

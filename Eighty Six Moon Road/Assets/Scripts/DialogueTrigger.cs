@@ -9,6 +9,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public void TriggerDialogue()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        Debug.Log("triggering dialogue in Dialogue Trigger Script...");
+        FindObjectOfType<DialoguePopup>().Popup(dialogue);
     }
 }

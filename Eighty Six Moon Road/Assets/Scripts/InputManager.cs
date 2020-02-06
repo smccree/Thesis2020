@@ -14,6 +14,10 @@ public class InputManager : MonoBehaviour
 
     public DialogueManager dialogueBox;
 
+    private void Start()
+    {
+        //inputWindow.SetActive(false);
+    }
     public void ReceiveInput()
     {
         //function to receive input from the text input window
