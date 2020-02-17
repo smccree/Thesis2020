@@ -10,7 +10,7 @@ public class InputManager : MonoBehaviour
     public GameObject inputWindow;
     public TMP_InputField inputText;
     public Animator I_animator;
-    private string userInput;
+    public string userInput = null;
 
     public DialogueManager dialogueBox;
 
