@@ -52,35 +52,39 @@ public class InteractableObject : MonoBehaviour
             //reseting
         }
         currentobj = null;
-
-        //Debug.Log(currentobj);
+        Debug.Log(currentobj);
     }
 
     public void Interact(GameObject currentobj)
     {
         //do an interaction here, usually pop up a reading/description, spawn dialogue etc.
         //Debug.Log("Interacted with " + currentobj.name);
-        
+
         //added to script to account for opening doors (doors will not close after being opened)
-        if (currentobj.name == "FrontDoor")
+        if (currentobj.name.Contains("Door"))
         {
-            currentobj.GetComponent<Door_Script>().OpenDoor();
+            if (currentobj.name == "FrontDoor")
+            {
+                currentobj.GetComponent<Door_Script>().OpenDoor();
+            }
+            else if (currentobj.name.Contains("Fred") || currentobj.name.Contains("Study") || currentobj.name.Contains("Cellar") || currentobj.name.Contains("Basement"))
+            {
+                Debug.Log("Locked, huh? I wonder what must be inside.");
+            }
+            else
+            {
+                currentobj.GetComponent<Door_Script>().OpenDoor();
+            }
         }
-        else if (currentobj.name == "Door")
-        {
-            //for now: blip out of existence (animation transform for front door doesn't work)
-            currentobj.SetActive(false);
-        }
+
         else if(currentobj.name.Contains("Note"))
         {
             currentobj.GetComponent<TextUI>().HideLabel();
             label = false;
             currentobj.GetComponent<TextUI>().ShowTextUI();
         }
-        else if(currentobj.name == "Locked")
-        {
-            Debug.Log("Locked, huh? I wonder what must be inside.");
-        }
+        
+        //v1 - lore cubes
         else if(currentobj.name.Contains("LoreCube"))
         {
             currentobj.GetComponent<TextUI>().HideLabel();

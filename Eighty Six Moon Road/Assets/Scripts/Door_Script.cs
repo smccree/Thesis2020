@@ -5,12 +5,20 @@ using UnityEngine;
 public class Door_Script : MonoBehaviour
 {
     public GameObject door;
-    public Animator door_anim;
+    //public Animator door_anim;
 
     //make doors open and close
 
     public void OpenDoor()
     {
-        door_anim.SetBool("isOpen", true);
+        Debug.Log("Opening Door");
+        if(door.name == "LibraryDoor")
+        {
+            door.transform.Rotate(0.0f, 90f, 0.0f, Space.Self);
+        }
+        else
+        {
+            door.transform.Rotate(0.0f, 115f, 0.0f, Space.Self);
+        }
     }
 }

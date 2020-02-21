@@ -9,25 +9,32 @@ public class EventConvoManager : MonoBehaviour
     public GameObject loreA;
     public GameObject loreB;
     public GameObject trigger;
+    public UnityStandardAssets.Characters.FirstPerson.FirstPersonController fps;
+
+    private bool triggered;
+
     //private bool used;
 
     private void Start()
     {
         
         trigger.SetActive(false);
+        triggered = false;
     }
     void Update()
     {
         //every frame check whether lore object A and B have been interacted with. If they have, trigger a conversation
-        //then set 'used' to true so that it will stop checking.
+        //then set 'triggered' to true so that it will stop checking.
 
-        //if(used == false) {
-        //Debug.Log("checking status...");
-        if (loreA.GetComponent<LoreObject>().interacted == true && loreB.GetComponent<LoreObject>().interacted == true)
-        {
-            trigger.SetActive(true);
-            
+        if(triggered == false) {
+            if (loreA.GetComponent<LoreObject>().interacted == true && loreB.GetComponent<LoreObject>().interacted == true)
+            {
+                if (fps.canMove == true) // s/t conversation pop up doesn't start while interacting with an object/frozen
+                {
+                    trigger.SetActive(true);
+                    triggered = true;
+                }
+            }
         }
-        
     }
 }
