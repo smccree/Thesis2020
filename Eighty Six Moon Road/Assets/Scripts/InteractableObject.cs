@@ -24,13 +24,11 @@ public class InteractableObject : MonoBehaviour
     }
     public void Update()
     {
-        
-        // Debug.Log(currentobj);
 
         //raycasting scripting
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit; //the thing we hit
-
+        
         //if ray hits something within the interact distance
         if (Physics.Raycast(ray, out hit, rayDistance, interactLayer))
         {
@@ -60,7 +58,7 @@ public class InteractableObject : MonoBehaviour
     public void Interact(GameObject currentobj)
     {
         //do an interaction here, usually pop up a reading/description, spawn dialogue etc.
-        //Debug.Log("Interacted with " + currentobj.name);
+        Debug.Log("Interacted with " + currentobj.name);
 
         //added to script to account for opening doors (doors will not close after being opened)
         if (currentobj.name.Contains("Door"))
@@ -111,9 +109,10 @@ public class InteractableObject : MonoBehaviour
         }
 
         //A non-text based object. Will also show a textUI but a smaller popup readable.
-        else if (currentobj.name.Contains("Object"))
+        else if(currentobj.name.Contains("Object"))
         {
-            currentobj.GetComponent<TextUI>().HideLabel();
+            Debug.Log("Player found an object!");
+            //currentobj.GetComponent<TextUI>().HideLabel();
             label = false;
             currentobj.GetComponent<TextUI>().ShowTextUI();
         }

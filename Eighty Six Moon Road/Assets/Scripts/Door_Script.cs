@@ -13,8 +13,6 @@ public class Door_Script : MonoBehaviour
 
     public void OpenDoor()
     {
-        //door.SetActive(false); //temp
-        Debug.Log("Opening Door");
         if(door.name == "LibraryDoor")
         {
             door.transform.Rotate(0.0f, 90f, 0.0f, Space.Self);

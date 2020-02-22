@@ -13,7 +13,7 @@ public class EventTriggerControl : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collider)
     {
-        Debug.Log(collider.tag);
+        //Debug.Log(collider.tag);
         //triggering a conversation with voice and player
         if (collider.CompareTag("EventTrigger") == true)
         {

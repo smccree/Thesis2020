@@ -35,7 +35,7 @@ public class TextUI : MonoBehaviour
     }*/
     public void ShowTextUI()
     {
-        
+        Debug.Log("Showing Text");
         panel.SetActive(true);
         popup.GetComponent<Animator>().SetBool("isOpen", true);
         fps.canMove = false;
