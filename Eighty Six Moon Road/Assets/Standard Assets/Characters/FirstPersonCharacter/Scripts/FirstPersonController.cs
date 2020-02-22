@@ -11,8 +11,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
     public class FirstPersonController : MonoBehaviour
     {
 
-        //Note: Disable Jump Functionality (why need jump in a walking sim?)
-
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
@@ -49,6 +47,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public bool canMove;
         public bool isLock;  //for cursor lock/cursor visibility
         public GameObject reticle; //visualize where player is looking
+        public bool isCrouching;
+
         // Use this for initialization
 
         private void Awake()
@@ -79,6 +79,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             if(canMove == true)
             {
+                //crouching
+                if(Input.GetKeyDown(KeyCode.C)) {
+                    if(isCrouching == false)
+                    {
+                        isCrouching = true;
+                    }
+                    else
+                    {
+                        isCrouching = false;
+                    }
+                }
                 RotateView(); //rotate view you're allowed to move
 
                 // the jump state needs to read here to make sure it is not missed
@@ -117,6 +128,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //put in if statement condition - if canMove == true, do below stuff.
             if(canMove == true)
             {
+                if(isCrouching == true)
+                {
+                    m_CharacterController.height = 0.7f;
+
+                }
+                else
+                {
+                    m_CharacterController.height = 1.7f;
+                    //transform.Translate(transform.position.x,3,transform.position.z, Space.Self);
+                    //broken: right now player falls through floor if they crouch without also moving with WASD
+                }
                 reticle.SetActive(true); //view reticle while moving around
                 m_MouseLook.SetCursorLock(true); //added
 

@@ -10,10 +10,12 @@ public class InteractableObject : MonoBehaviour
 
     //Defines interactable objects
     public GameObject currentobj = null; //object we are currently interacting with
-    private float rayDistance = 5f; //maximum distance for raycast hit
+    private float rayDistance = 1f; //maximum distance for raycast hit
     public LayerMask interactLayer; //only shoot rays at interactables
     public bool interacting;
     public bool label; //there is or isn't a label on screen
+
+    public DoorController doorcontrol;
 
     private void Start()
     {
@@ -52,7 +54,7 @@ public class InteractableObject : MonoBehaviour
             //reseting
         }
         currentobj = null;
-        Debug.Log(currentobj);
+        //Debug.Log(currentobj);
     }
 
     public void Interact(GameObject currentobj)
@@ -63,20 +65,10 @@ public class InteractableObject : MonoBehaviour
         //added to script to account for opening doors (doors will not close after being opened)
         if (currentobj.name.Contains("Door"))
         {
-            if (currentobj.name == "FrontDoor")
-            {
-                currentobj.GetComponent<Door_Script>().OpenDoor();
-            }
-            else if (currentobj.name.Contains("Fred") || currentobj.name.Contains("Study") || currentobj.name.Contains("Cellar") || currentobj.name.Contains("Basement"))
-            {
-                Debug.Log("Locked, huh? I wonder what must be inside.");
-            }
-            else
-            {
-                currentobj.GetComponent<Door_Script>().OpenDoor();
-            }
+            currentobj.GetComponent<Door_Script>().CheckStatus();
         }
-
+        
+        //show a text UI popup /readable
         else if(currentobj.name.Contains("Note"))
         {
             currentobj.GetComponent<TextUI>().HideLabel();
@@ -84,28 +76,72 @@ public class InteractableObject : MonoBehaviour
             currentobj.GetComponent<TextUI>().ShowTextUI();
         }
         
+        //Player has found a key to unlock a locked door
+        else if(currentobj.name.Contains("Key"))
+        {
+            Debug.Log("Player found Key");
+            if(currentobj.name.Contains("Basement"))
+            {
+                if(currentobj.name == "BasementKey1")
+                {
+                    doorcontrol._basementkey1 = true;
+                    currentobj.SetActive(false);
+                }
+                if (currentobj.name == "BasementKey2")
+                {
+                    doorcontrol._basementkey2 = true;
+                    currentobj.SetActive(false);
+                }
+                if (currentobj.name == "BasementKey3")
+                {
+                    doorcontrol._basementkey3 = true;
+                    currentobj.SetActive(false);
+                }
+            }
+            else if(currentobj.name == "StudyKey")
+            {
+                doorcontrol._studykey = true;
+                currentobj.SetActive(false);
+            }
+            else if(currentobj.name == "CellarKey")
+            {
+                doorcontrol._cellarkey = true;
+                currentobj.SetActive(false);
+            }
+        }
+
+        //A non-text based object. Will also show a textUI but a smaller popup readable.
+        else if (currentobj.name.Contains("Object"))
+        {
+            currentobj.GetComponent<TextUI>().HideLabel();
+            label = false;
+            currentobj.GetComponent<TextUI>().ShowTextUI();
+        }
+
         //v1 - lore cubes
-        else if(currentobj.name.Contains("LoreCube"))
+        else if (currentobj.name.Contains("LoreCube"))
         {
             currentobj.GetComponent<TextUI>().HideLabel();
             label = false;
             currentobj.GetComponent<TextUI>().ShowTextUI();
             currentobj.GetComponent<LoreObject>().interacted = true;
-            Debug.Log("interacted with lorecube");
+            //Debug.Log("interacted with lorecube");
         }
-        else if(currentobj.name.Contains("Convo") || currentobj.name.Contains("FinalCube"))
+
+        else if (currentobj.name.Contains("Convo") || currentobj.name.Contains("FinalCube"))
         {
             //only use once
-            if(currentobj.GetComponent<ConversationObject>().interacted == false)
+            if (currentobj.GetComponent<ConversationObject>().interacted == false)
             {
                 currentobj.GetComponent<ConversationTrigger>().TriggerDialogue();
-                Debug.Log("interacted with convo cube");
+                //Debug.Log("interacted with convo cube");
                 currentobj.GetComponent<ConversationObject>().interacted = true;
-            } 
+            }
         }
+
         else
         {
-            Debug.Log("doing nothing.");
+            //Debug.Log("doing nothing.");
         }
         interacting = false; //done interacting
     }
