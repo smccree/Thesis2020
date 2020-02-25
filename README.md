@@ -4,11 +4,11 @@ Github repository for Northeastern University - Game Science and Design Master's
 ## Eighty-Six Moon Road: A Participatory Narrative Walking Simulator Game
 This is an ongoing project, set to be completed in spring 2020.
 
-In Eighty-Six Moon Road, the player has just moved into a new house. One morning, they wake up to a mysterious voice calling out to them, and find an old key to the abandoned house across the street. They're tasked with exploring the house at 86 Moon Road and helping the ghost that once lived there to remember what happened to them, and why the house has become abandoned.
+In Eighty-Six Moon Road, the player embodies the role of 'private investigator' in the disappearance of a woman who was last seen at Beale Terrace, 86 Moon Road, London in the year 1881. When they arrive at the house, they immediately find who they're looking for ... in the form of a faceless ghost. Together they explore the house for clues to unlock the ghost's identity and fate, and put together all the pieces that led to her tragic passing.
 
 ### Project Goals:
 1. Tell a cohesive and moving story using environmental storytelling in the walking simulator format
-2. Allow the player to use their natural language in composing conversations with the mysterious ghost
+2. Allow the player to type their dialogue responses into a keyboard as user-generated text 
 3. Implement an AI system that allows the ghost to respond in a way that makes sense based on player input
 
 ### Project Specs:
