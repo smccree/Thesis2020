@@ -10,15 +10,22 @@ public class DoorController : MonoBehaviour
     public bool _basementkey2;
     public bool _basementkey3;
 
+    public DialoguePopup popupWindow;
     // Start is called before the first frame update
-    void Start()
+    
+    public void LockedDoor(string door)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(door == "study")
+        {
+            popupWindow.DictionaryPopup(DialogueLines.Name, DialogueLines.Locked_Study);
+        }
+        else if (door == "cellar")
+        {
+            popupWindow.DictionaryPopup(DialogueLines.Name, DialogueLines.Locked_Cellar);
+        }
+        else if (door == "basement")
+        {
+            popupWindow.DictionaryPopup(DialogueLines.Name, DialogueLines.Locked_Basement);
+        }
     }
 }

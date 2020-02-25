@@ -14,9 +14,14 @@ public class InputManager : MonoBehaviour
 
     public DialogueManager dialogueBox;
 
+    //am I using the AI system?
+    //these are inherited from AIOpenWindow() method.
+    public bool useAI;
+
     private void Start()
     {
-        //inputWindow.SetActive(false);
+        useAI = true;
+        //useAI = false;
     }
     public void ReceiveInput()
     {
@@ -29,9 +34,17 @@ public class InputManager : MonoBehaviour
         inputText.text = null;
 
         Debug.Log(userInput);
-
-        CloseInputWindow();
-        dialogueBox.Unfreeze();
+        if(useAI)
+        {
+            CloseInputWindow();
+            dialogueBox.ShowResponse(userInput);
+        }
+        else
+        {
+            CloseInputWindow();
+            dialogueBox.Unfreeze();
+        }
+        
     }
 
     public void CloseInputWindow()

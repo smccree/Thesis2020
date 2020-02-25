@@ -48,6 +48,20 @@ public class DialoguePopup : MonoBehaviour
         StartCoroutine("Countdown");
     }
 
+    public void DictionaryPopup(string name, string sentence)
+    {
+
+        nameText.text = name;
+        popupDialogueBox.SetActive(true);
+        popup_isopen = true;
+
+        StopAllCoroutines();
+        count = 10;
+        //type letters 1 by 1 on screen and start countdown timer
+        StartCoroutine(TypeSentence(sentence));
+        StartCoroutine("Countdown");
+    }
+
     IEnumerator TypeSentence(string sentence)
     {
         dialogueText.text = "";

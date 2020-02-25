@@ -43,19 +43,19 @@ public class DialogueLines : MonoBehaviour
     public static string Name = "Mysterious Voice";
     public static string Name_Revealed = "Rebecca Stearn";
 
-    public static string Entrance_OP = "Who goes there? What are you doing here?";
-    public static string Entrance_0 = "You're a Private Investigator? H.A. sent you? That doesn't sound familiar to me...but then again, nothing does.";
-    public static string Entrance_1 = "It's all gotten jumbled up in my brain, somehow. I know I asked you what you're doing here, but I wish you could tell me why I'm here. Nothing makes sense anymore.";
-    public static string Entrance_2 = "I don't remember anything. But that must be why you're here, right? I might be the one you came here looking for. If we can find out what happened to me, that solves both our problems.";
-    public static string Entrance_3 = "Take a look around, and tell me what you find. I'll let you know if I remember anything.";
-    public static string[] Entrance_Keywords = { "key1", "key2", "key3" };
+    public static string Entrance_OP = "I hear something ... can it be, a visitor? It's been so long! So then, who are you? What are you doing here?";
+    public static string Entrance_0 = "You're being rather vague...well, no matter. If you could take a look around for me, I'd appreciate it greatly. There must be a reason I'm trapped here. I just can't remember what happened without your help.";
+    public static string Entrance_1 = "Nothing makes sense here, does it? Well no matter. Now that you're here we can work together. Take a look around, let me know if you find anything.";
+    public static string Entrance_2 = "I might be the one you came here looking for. If we can find out what happened to me, that solves both our problems. Well, take a look around then. Something in this house must have the information we're looking for.";
+    public static string Entrance_3 = "You're a private investigator? That's perfect - you can help me! If you're looking for someone, well then I'm probably her. It would help if I could remember anything else, though. Well, take a look around then. Something in this house must have the information we're looking for.";
+    public static string[] Entrance_Keywords = { "private", "investigator", "H.A", "H", "A", "searching", "missing", "sister", "woman", "person" };
 
-    public static string Dining_OP = "Dining 1";
-    public static string Dining_0 = "Voice line 1";
-    public static string Dining_1 = "Voice line 1";
-    public static string Dining_2 = "Voice line 1";
-    public static string Dining_3 = "Voice line 1";
-    public static string[] Dining_Keywords = { "key1", "key2", "key3" };
+    public static string Dining_OP = "Dining Room Opening Line";
+    public static string Dining_0 = "Player said 0 keywords.";
+    public static string Dining_1 = "Player said 1 keyword.";
+    public static string Dining_2 = "Player said 2 keywords.";
+    public static string Dining_3 = "Player said 3 keywords.";
+    public static string[] Dining_Keywords = { "dining", "table", "mantle" };
 
     public static string Library_OP = "Look at the size of this place! I could sit reading in here for hours. What did you find?";
     public static string Library_0 = "Voice line 1";
@@ -138,6 +138,10 @@ public class DialogueLines : MonoBehaviour
     public static string Popup_Lore_9 = "Line about Stanley";
     public static string Popup_Lore_10 = "Line about Fred";
 
+    public static string Locked_Study = "Locked, huh? I'm sure the key is around here somewhere.";
+    public static string Locked_Basement = "This is quite an odd looking door. It seems as though you'll need three keys to open it.";
+    public static string Locked_Cellar = "Another locked door? This house has more security than a bank vault.";
+
     public static string Voice_Failure_1 = "You can't be serious! Are you even trying to help me?";
     public static string Voice_Failure_2 = "You don't have to be here, you know. You can walk out the front door and forget all about this place, if you want. Some of us don't have that luxury.";
     public static string Voice_Failure_3 = "If you're going to joke around like that, you might as well go home and bother some other poor soul.";
@@ -162,20 +166,20 @@ public class DialogueLines : MonoBehaviour
     //Initialize arrays where the dialogue lines will be stored
     static string[] EntVal = { Entrance_OP, Entrance_0, Entrance_1, Entrance_2, Entrance_3 };
     static string[] DineVal = { Dining_OP, Dining_0, Dining_1, Dining_2, Dining_3 };
-    string[] LibVal = { Library_OP, Library_0, Library_1, Library_2, Library_3 };
-    string[] StudyVal = { Study_OP, Study_0, Study_1, Study_2, Study_3 };
-    string[] RebVal = { Rebecca_OP, Rebecca_0, Rebecca_1, Rebecca_2, Rebecca_3 };
-    string[] DrawVal = { Drawing_OP, Drawing_0, Drawing_1, Drawing_2, Drawing_3 };
-    string[] ElizaVal = { Eliza_OP, Eliza_0, Eliza_1, Eliza_2, Eliza_3 };
-    string[] FredVal = { Fred_OP, Fred_0, Fred_1, Fred_2, Fred_3 };
-    string[] DressVal = { Dressing_OP, Dressing_0, Dressing_1, Dressing_2, Dressing_3 };
-    string[] KitchVal = { Kitchen_OP, Kitchen_0, Kitchen_1, Kitchen_2, Kitchen_3 };
-    string[] CellVal = { Cellar_OP, Cellar_0, Cellar_1, Cellar_2, Cellar_3 };
-    string[] HouseVal = { Housekeeper_OP, Housekeeper_0, Housekeeper_1, Housekeeper_2, Housekeeper_3 };
+    static string[] LibVal = { Library_OP, Library_0, Library_1, Library_2, Library_3 };
+    static string[] StudyVal = { Study_OP, Study_0, Study_1, Study_2, Study_3 };
+    static string[] RebVal = { Rebecca_OP, Rebecca_0, Rebecca_1, Rebecca_2, Rebecca_3 };
+    static string[] DrawVal = { Drawing_OP, Drawing_0, Drawing_1, Drawing_2, Drawing_3 };
+    static string[] ElizaVal = { Eliza_OP, Eliza_0, Eliza_1, Eliza_2, Eliza_3 };
+    static string[] FredVal = { Fred_OP, Fred_0, Fred_1, Fred_2, Fred_3 };
+    static string[] DressVal = { Dressing_OP, Dressing_0, Dressing_1, Dressing_2, Dressing_3 };
+    static string[] KitchVal = { Kitchen_OP, Kitchen_0, Kitchen_1, Kitchen_2, Kitchen_3 };
+    static string[] CellVal = { Cellar_OP, Cellar_0, Cellar_1, Cellar_2, Cellar_3 };
+    static string[] HouseVal = { Housekeeper_OP, Housekeeper_0, Housekeeper_1, Housekeeper_2, Housekeeper_3 };
 
     //------------------------------------------ Adding Dialogue Lines to Dictionary at Start --------------------------------------------------
 
-    private void Start()
+    public static void Initialize()
     {
         //Room Key --> Dialogue Lines
         dict_lines.Add("entrance", EntVal);

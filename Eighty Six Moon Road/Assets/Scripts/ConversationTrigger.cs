@@ -8,7 +8,7 @@ public class ConversationTrigger : MonoBehaviour
 
     public void TriggerDialogue()
     {
-        Debug.Log("triggering dialogue in Dialogue Trigger Script...");
+        Debug.Log("triggering dialogue in Conversation Trigger Script...");
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
     }
 }

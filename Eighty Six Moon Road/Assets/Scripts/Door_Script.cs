@@ -13,6 +13,7 @@ public class Door_Script : MonoBehaviour
 
     public void OpenDoor()
     {
+        door.SetActive(false);
         if(door.name == "LibraryDoor")
         {
             door.transform.Rotate(0.0f, 90f, 0.0f, Space.Self);
@@ -28,25 +29,42 @@ public class Door_Script : MonoBehaviour
     {
         if(door.name.Contains("Locked"))
         {
-            if(door.name.Contains("Study") && door_control._studykey)
+            if (door.name.Contains("Study"))
             {
-                OpenDoor();
+                if (door_control._studykey)
+                {
+                    OpenDoor();
+                }
+                else
+                {
+                    door_control.LockedDoor("study");
+                }
             }
-            else if (door.name.Contains("Cellar") && door_control._cellarkey)
+            else if (door.name.Contains("Cellar"))
             {
-                OpenDoor();
+                if (door_control._cellarkey)
+                {
+                    OpenDoor();
+                }
+                else
+                {
+                    door_control.LockedDoor("cellar");
+                }
             }
             else if (door.name.Contains("Basement"))
             {
-                if(door_control._basementkey1 && door_control._basementkey2 && door_control._basementkey3)
+                if (door_control._basementkey1 && door_control._basementkey2 && door_control._basementkey3)
                 {
                     OpenDoor();
+                }
+                else
+                {
+                    door_control.LockedDoor("basement");
                 }
             }
             else
             {
                 Debug.Log("Locked, huh? I wonder what must be inside. The key must be around here somewhere...");
-                //Show 'door is locked' pop up for this specific door
             }
         }
         else
