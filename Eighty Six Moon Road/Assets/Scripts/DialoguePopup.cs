@@ -13,7 +13,7 @@ public class DialoguePopup : MonoBehaviour
     public GameObject popupDialogueBox; //transparent
 
     private string sentence; //the dialogue line (don't need a queue since all pop ups will be 1 sentence)
-    private int count; //countdown time while count > 0
+    public int count; //countdown time while count > 0
     private bool popup_isopen;
     void Start()
     {

@@ -15,7 +15,7 @@ public class EventConvoManager : MonoBehaviour
 
     //private bool used;
 
-    private void Start()
+    private void Awake()
     {
         
         trigger.SetActive(false);
@@ -31,6 +31,7 @@ public class EventConvoManager : MonoBehaviour
             {
                 if (fps.canMove == true) // s/t conversation pop up doesn't start while interacting with an object/frozen
                 {
+                    Debug.Log("Trigger Spawner Triggering Conversation....");
                     trigger.SetActive(true);
                     triggered = true;
                 }

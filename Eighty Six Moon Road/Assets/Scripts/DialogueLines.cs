@@ -50,26 +50,26 @@ public class DialogueLines : MonoBehaviour
     public static string Entrance_3 = "You're a private investigator? That's perfect - you can help me! If you're looking for someone, well then I'm probably her. It would help if I could remember anything else, though. Well, take a look around then. Something in this house must have the information we're looking for.";
     public static string[] Entrance_Keywords = { "private", "investigator", "H.A", "H", "A", "searching", "missing", "sister", "woman", "person" };
 
-    public static string Dining_OP = "Dining Room Opening Line";
-    public static string Dining_0 = "Player said 0 keywords.";
-    public static string Dining_1 = "Player said 1 keyword.";
-    public static string Dining_2 = "Player said 2 keywords.";
-    public static string Dining_3 = "Player said 3 keywords.";
-    public static string[] Dining_Keywords = { "dining", "table", "mantle" };
+    public static string Dining_OP = "It's so dark in here, even with all these windows. There must be a storm brewing outside. Have you found anything in here?";
+    public static string Dining_0 = "That's a little disappointing.";
+    public static string Dining_1 = "You found a note? I don't recognize any of the names. But 'Hannah'... could that be the 'H.A.' who sent you here?";
+    public static string Dining_2 = "'An eye for an eye, and a tooth for a tooth, huh.' It seems fair on the outset, but it's quite cruel, when you think about it. I'd rather live and let live. Ironic, given the circumstances.";
+    public static string Dining_3 = "Hold on a moment. Those names sound familiar. Hannah and Rebecca ... sisters. Hannah Ainsworth and Rebecca Stearn! Yes! I must have known them.";
+    public static string[] Dining_Keywords = { "bible", "note", "Hannah", "Rebecca" };
 
-    public static string Library_OP = "Look at the size of this place! I could sit reading in here for hours. What did you find?";
-    public static string Library_0 = "Voice line 1";
-    public static string Library_1 = "Voice line 1";
-    public static string Library_2 = "Voice line 1";
-    public static string Library_3 = "Voice line 1";
-    public static string[] Library_Keywords = { "key1", "key2", "key3" };
+    public static string Library_OP = "Nothing so comforting as rows of books and a shawl to wrap around one's shoulders, I think. Did you get a chance to read that note there on the table?";
+    public static string Library_0 = "Oh come now, be serious! I need to know what it says. I might remember something.";
+    public static string Library_1 = "So Rebecca was staying here for the summer. The house is quite empty now, save the two of us. Where has everyone gone?";
+    public static string Library_2 = "I suppose Rebecca Stearn is a writer, then. Kind of Frederick to invite her to stay for the summer.";
+    public static string Library_3 = "Frederick Beale ... I think I remember him. Always wore green. He used to sit in this chair, reading, for hours.";
+    public static string[] Library_Keywords = { "Rebecca", "Frederick", "write", "book", "visit", "summer" };
 
-    public static string Study_OP = "This looks like an office - maybe Frederick's. What have you found out?";
-    public static string Study_0 = "Voice line 1";
-    public static string Study_1 = "voice";
-    public static string Study_2 = "line";
-    public static string Study_3 = "dialogue";
-    public static string[] Study_Keywords = { "key1", "key2", "key3" };
+    public static string Study_OP = "This must be Frederick's office. I was never allowed in here. I always wondered what I might find.";
+    public static string Study_0 = "Look harder. I have a bad feeling.";
+    public static string Study_1 = "Publishing is a tough business to be in, these days. People are too busy to read, I find. It only makes sense that they'd be doing poorly.";
+    public static string Study_2 = "So Stanley was pressuring Eliza into marrying him? And Frederick just went along with it? The gall of some men - I swear!";
+    public static string Study_3 = "Stanley was always a snotfaced little shnouzer. Always yapping around crying for attention and getting angry when he wouldn't get his way. I'm glad not to see any more of him, I'll tell you that.";
+    public static string[] Study_Keywords = { "ledger", "Stanley", "Crofton", "publishing", "profits", "losses", "Eliza", "rejection" };
 
     public static string Rebecca_OP = "Hold on a minute. I think ... this was MY bedroom. I think I'm Rebecca! I feel a bit sick, now. Tell me, what did I write in my diary?";
     public static string Rebecca_0 = "dialogue";

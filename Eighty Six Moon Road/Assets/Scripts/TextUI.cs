@@ -40,6 +40,8 @@ public class TextUI : MonoBehaviour
         popup.GetComponent<Animator>().SetBool("isOpen", true);
         fps.canMove = false;
         fps.m_MouseLook.lockCursor = false;
+
+        
     }
 
     public void HideTextUI()
@@ -49,7 +51,7 @@ public class TextUI : MonoBehaviour
         popup.GetComponent<Animator>().SetBool("isOpen", false);
         fps.canMove = true;
         fps.m_MouseLook.lockCursor = true;
-
+        loreobj.GetComponent<LoreObject>().interacted = true;
         //ShowLabel();
     }
 

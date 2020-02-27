@@ -11,17 +11,22 @@ public class EventTriggerControl : MonoBehaviour
     {
         //hasviewed = false;
     }
-    private void OnTriggerEnter(Collider collider)
+    private void OnTriggerStay(Collider collider)
     {
         //Debug.Log(collider.tag);
         //triggering a conversation with voice and player
         if (collider.CompareTag("EventTrigger") == true)
         {
-            eventTrigger = collider.gameObject;
-            //Debug.Log(eventTrigger.name);
-            Debug.Log("triggering conversation....");
-            eventTrigger.GetComponent<ConversationTrigger>().TriggerDialogue();
-            Destroy(eventTrigger);
+            if(collider.GetComponent<TriggerProperties>().readytogo == true)
+            {
+                Debug.Log("This collider is ready to go! This collider is named " + collider.name);
+                eventTrigger = collider.gameObject;
+                //Debug.Log(eventTrigger.name);
+                Debug.Log("triggering conversation....");
+                eventTrigger.GetComponent<ConversationTrigger>().TriggerDialogue();
+                Destroy(eventTrigger);
+            }
+            
         }
         //triggering a pop up dialogue from voice
         else if (collider.CompareTag("PopUpDialogue") == true)

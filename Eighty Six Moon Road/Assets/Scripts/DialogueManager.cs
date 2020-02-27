@@ -43,6 +43,7 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
         useAI = true;
         //useAI = false;
+        //DialogueLines.Initialize();
 
     }
     //steps to do this:
@@ -143,7 +144,7 @@ public class DialogueManager : MonoBehaviour
     }
 //----------------------------------------------- V2 Updates: AI System -----------------------------------------------------------------
 
-    /*Incomplete: updated version of "Start Dialogue" class that takes in a keycode that corresponds to the line of dialogue
+    /*Updated version of "Start Dialogue" class that takes in a keycode that corresponds to the line of dialogue
         that should be read into the method from the DialogueLines class*/
     public void AIDialogue(string key)
     {
@@ -159,7 +160,7 @@ public class DialogueManager : MonoBehaviour
         nameText.text = DialogueLines.Name;//person's name
 
         //Initialize Key-Value Dictionary Pairs
-        DialogueLines.Initialize();
+        //DialogueLines.Initialize();
 
         //get the dialogue options and keywords for this room trigger
         dialogue_options = DialogueLines.dict_lines[key];
@@ -262,6 +263,7 @@ public class DialogueManager : MonoBehaviour
 
         //Display AI response as pop-up 
         popupManager.DictionaryPopup(DialogueLines.Name, response);
+        //player.GetComponent<EventTriggerControl>().eventTrigger.GetComponent<TriggerProperties>().interacted = true;
         Unfreeze();
     }
 
