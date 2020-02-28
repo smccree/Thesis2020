@@ -15,21 +15,25 @@ public class GameManager : MonoBehaviour
     public void ShowCredits()
     {
         //Go to credits scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 4);
     }
     public void ReturntoMenu()
     {
         //return to main menu from main game scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
     }
 
     public void ReturnCredits()
     {
         //return to main menu from credits scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 4);
     }
 
-
+    public void TriggerEnd()
+    {
+        //from main scene to end scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     public void QuitGame()
     {
         //close the game - won't work in Unity Editor

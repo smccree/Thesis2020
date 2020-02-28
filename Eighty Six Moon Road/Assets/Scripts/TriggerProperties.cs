@@ -26,16 +26,13 @@ public class TriggerProperties : MonoBehaviour
     }
     public void Update()
     {
-        Debug.Log("checking status of " + this.name);
         if(loreobj1.interacted && loreobj2.interacted && fps.canMove == true)
         {
-            Debug.Log("Ready!");
             readytogo = true;
         }
         else
         {
-            Debug.Log("Not ready!");
-            Debug.Log(loreobj1.interacted + " " + loreobj2.interacted);
+            //Debug.Log(loreobj1.interacted + " " + loreobj2.interacted);
         }
     }
 }

@@ -44,11 +44,11 @@ public class DialogueLines : MonoBehaviour
     public static string Name_Revealed = "Rebecca Stearn";
 
     public static string Entrance_OP = "I hear something ... can it be, a visitor? It's been so long! So then, who are you? What are you doing here?";
-    public static string Entrance_0 = "You're being rather vague...well, no matter. If you could take a look around for me, I'd appreciate it greatly. There must be a reason I'm trapped here. I just can't remember what happened without your help.";
+    public static string Entrance_0 = "So someone didn't ask you to come here? I find it rather unlikely that you just wandered into this house on your own.";
     public static string Entrance_1 = "Nothing makes sense here, does it? Well no matter. Now that you're here we can work together. Take a look around, let me know if you find anything.";
     public static string Entrance_2 = "I might be the one you came here looking for. If we can find out what happened to me, that solves both our problems. Well, take a look around then. Something in this house must have the information we're looking for.";
     public static string Entrance_3 = "You're a private investigator? That's perfect - you can help me! If you're looking for someone, well then I'm probably her. It would help if I could remember anything else, though. Well, take a look around then. Something in this house must have the information we're looking for.";
-    public static string[] Entrance_Keywords = { "private", "investigator", "H.A", "H", "A", "searching", "missing", "sister", "woman", "person" };
+    public static string[] Entrance_Keywords = { "private", "investigator", "HA", "H", "A", "searching", "missing", "sister", "woman", "person" };
 
     public static string Dining_OP = "It's so dark in here, even with all these windows. There must be a storm brewing outside. Have you found anything in here?";
     public static string Dining_0 = "That's a little disappointing.";
@@ -162,6 +162,7 @@ public class DialogueLines : MonoBehaviour
     public static string Voice_EndDrama_8 = "But of course, Fred couldn't handle these slights.";
     public static string Voice_EndDrama_9 = "He killed me by drugging my nightly cup of tea and hitting me over the head with a book.";
     public static string Voice_EndDrama_10 = "He donated my body to science via the black market.";
+    public static string[] EndDrama_Keywords = { "key1", "key2", "key3" };
 
     //Initialize arrays where the dialogue lines will be stored
     static string[] EntVal = { Entrance_OP, Entrance_0, Entrance_1, Entrance_2, Entrance_3 };
@@ -176,6 +177,8 @@ public class DialogueLines : MonoBehaviour
     static string[] KitchVal = { Kitchen_OP, Kitchen_0, Kitchen_1, Kitchen_2, Kitchen_3 };
     static string[] CellVal = { Cellar_OP, Cellar_0, Cellar_1, Cellar_2, Cellar_3 };
     static string[] HouseVal = { Housekeeper_OP, Housekeeper_0, Housekeeper_1, Housekeeper_2, Housekeeper_3 };
+    static string[] EndVal = {Voice_EndDrama_1, Voice_EndDrama_2, Voice_EndDrama_3, Voice_EndDrama_4, Voice_EndDrama_5, Voice_EndDrama_6,
+    Voice_EndDrama_7, Voice_EndDrama_8, Voice_EndDrama_9, Voice_EndDrama_10};
 
     //------------------------------------------ Adding Dialogue Lines to Dictionary at Start --------------------------------------------------
 
@@ -187,12 +190,14 @@ public class DialogueLines : MonoBehaviour
         dict_lines.Add("library", LibVal);
         dict_lines.Add("study", StudyVal);
         dict_lines.Add("rebecca", RebVal);
+        dict_lines.Add("drawing", DrawVal);
         dict_lines.Add("eliza", ElizaVal);
         dict_lines.Add("fred", FredVal);
         dict_lines.Add("dressing", DressVal);
         dict_lines.Add("kitchen", KitchVal);
         dict_lines.Add("cellar", CellVal);
         dict_lines.Add("housekeeper", HouseVal);
+        dict_lines.Add("ending", EndVal);
 
         //Room Key --> Desired Keywords
         dict_keywords.Add("entrance", Entrance_Keywords);
@@ -200,11 +205,13 @@ public class DialogueLines : MonoBehaviour
         dict_keywords.Add("library", Library_Keywords);
         dict_keywords.Add("study", Study_Keywords);
         dict_keywords.Add("rebecca", Rebecca_Keywords);
+        dict_keywords.Add("drawing", Drawing_Keywords);
         dict_keywords.Add("eliza", Eliza_Keywords);
         dict_keywords.Add("fred", Fred_Keywords);
         dict_keywords.Add("dressing", Dressing_Keywords);
         dict_keywords.Add("kitchen", Kitchen_Keywords);
         dict_keywords.Add("cellar", Cellar_Keywords);
         dict_keywords.Add("housekeeper", Housekeeper_Keywords);
+        dict_keywords.Add("ending", EndDrama_Keywords);
     }
 }

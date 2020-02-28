@@ -9,6 +9,8 @@ public class DialogueManager : MonoBehaviour
 {
     //Game Version: AI or Simple
     public bool useAI;
+    public bool isEnd; //trigger end game scene transition
+
     //public string key; //set on each event trigger
 
     //Dialogue box variables:
@@ -36,14 +38,15 @@ public class DialogueManager : MonoBehaviour
     //building AI dialogue system variables:
     private string[] keywords;
     private string[] dialogue_options;
+    private string key;
 
     // Start is called before the first frame update
     void Start()
     {
         sentences = new Queue<string>();
         useAI = true;
+        isEnd = false;
         //useAI = false;
-        //DialogueLines.Initialize();
 
     }
     //steps to do this:
@@ -57,7 +60,7 @@ public class DialogueManager : MonoBehaviour
         if (useAI)
         {
             Debug.Log("Starting AI Dialogue");
-            string key = player.GetComponent<EventTriggerControl>().eventTrigger.GetComponent<TriggerProperties>().trigger_keyword;
+            key = player.GetComponent<EventTriggerControl>().eventTrigger.GetComponent<TriggerProperties>().trigger_keyword;
             Debug.Log("this is the keyword: " + key);
             AIDialogue(key);
         }
@@ -263,8 +266,14 @@ public class DialogueManager : MonoBehaviour
 
         //Display AI response as pop-up 
         popupManager.DictionaryPopup(DialogueLines.Name, response);
-        //player.GetComponent<EventTriggerControl>().eventTrigger.GetComponent<TriggerProperties>().interacted = true;
-        Unfreeze();
+        if(key == "entrance")//testing
+        {
+            isEnd = true; //fancy fade to black stuff
+        }
+        else
+        {
+            Unfreeze();
+        }
     }
 
     int CompareToKeys(string word, string[] keywords)

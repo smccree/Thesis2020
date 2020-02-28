@@ -7,6 +7,7 @@ public class EventTriggerControl : MonoBehaviour
     // Start is called before the first frame update
     //private bool hasviewed;
     public GameObject eventTrigger = null;
+    public EndDramaTrigger_V2 endDrama; //for end drama later
     private void Start()
     {
         //hasviewed = false;
@@ -17,14 +18,20 @@ public class EventTriggerControl : MonoBehaviour
         //triggering a conversation with voice and player
         if (collider.CompareTag("EventTrigger") == true)
         {
-            if(collider.GetComponent<TriggerProperties>().readytogo == true)
+            if(collider.name == "EndDramaTrigger")
+            {
+                Debug.Log("triggering end of the game");
+                eventTrigger = collider.gameObject;
+                eventTrigger.GetComponent<ConversationTrigger>().TriggerDialogue();
+                Destroy(eventTrigger);
+            }
+            else if(collider.GetComponent<TriggerProperties>().readytogo == true)
             {
                 Debug.Log("This collider is ready to go! This collider is named " + collider.name);
                 eventTrigger = collider.gameObject;
-                //Debug.Log(eventTrigger.name);
-                Debug.Log("triggering conversation....");
                 eventTrigger.GetComponent<ConversationTrigger>().TriggerDialogue();
                 Destroy(eventTrigger);
+                endDrama.num_triggered++;
             }
             
         }
