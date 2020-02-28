@@ -5,13 +5,25 @@ using UnityEngine;
 public class GameEnding : MonoBehaviour
 {
     public DialogueManager manager;
+    public Animator anim;
     void Update()
     {
         Debug.Log("not the end");
         if(manager.isEnd)
         {
             Debug.Log("the end");
-            this.GetComponent<GameManager>().TriggerEnd();
+            FadeToBlack();
         }   
+    }
+
+    void FadeToBlack()
+    {
+        anim.SetTrigger("FadeOut");
+        
+    }
+
+    void EndGame()
+    {
+        this.GetComponent<GameManager>().TriggerEnd();
     }
 }

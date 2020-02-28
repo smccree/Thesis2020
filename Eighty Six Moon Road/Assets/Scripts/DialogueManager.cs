@@ -266,7 +266,7 @@ public class DialogueManager : MonoBehaviour
 
         //Display AI response as pop-up 
         popupManager.DictionaryPopup(DialogueLines.Name, response);
-        if(key == "entrance")//testing
+        if(key == "ending")
         {
             isEnd = true; //fancy fade to black stuff
         }
