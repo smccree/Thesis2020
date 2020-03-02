@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         //play the game by pressing start
-        SceneManager.LoadScene(1); //choosing next scene in queue
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //choosing next scene in queue
     }
 
     public void ShowCredits()
