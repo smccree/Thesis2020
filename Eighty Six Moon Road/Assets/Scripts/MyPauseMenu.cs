@@ -8,6 +8,7 @@ public class MyPauseMenu : MonoBehaviour
     public static bool isPaused = false;
     public bool canPause;
     public GameObject menu;
+    public GameObject notesPanel;
     public UnityStandardAssets.Characters.FirstPerson.FirstPersonController fps;
 
     private void Awake()
@@ -47,4 +48,19 @@ public class MyPauseMenu : MonoBehaviour
         isPaused = false;
         fps.canMove = true;
     }
+
+    public void ShowNotes()
+    {
+        //Panel with text from collected notes
+        notesPanel.GetComponent<NotePanel>().ShowPanel();
+        canPause = false; //can't un pause menu
+    }
+
+    public void HideNotes()
+    {
+        //back button script
+        notesPanel.GetComponent<NotePanel>().HidePanel();
+        canPause = true; //can un pause menu
+    }
+
 }

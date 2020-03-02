@@ -8,11 +8,19 @@ public class LoreObject : MonoBehaviour
     //based off of whether you've clicked on it before. Very simple script.
 
     public bool interacted;
- 
+    public GameObject button;
     
     void Start()
     {
         interacted = false;
+    }
+
+    private void Update()
+    {
+        if (interacted == true)
+        {
+            button.GetComponent<LoreObjectButton>().interacted = true;
+        }
     }
 
 }

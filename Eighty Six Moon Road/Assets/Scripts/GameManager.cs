@@ -9,30 +9,30 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         //play the game by pressing start
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //choosing next scene in queue
+        SceneManager.LoadScene(1); //choosing next scene in queue
     }
 
     public void ShowCredits()
     {
         //Go to credits scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 4);
+        SceneManager.LoadScene(4);
     }
     public void ReturntoMenu()
     {
         //return to main menu from main game scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
+        SceneManager.LoadScene(0);
     }
 
     public void ReturnCredits()
     {
         //return to main menu from credits scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 4);
+        SceneManager.LoadScene(0);
     }
 
     public void TriggerEnd()
     {
         //from main scene to end scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(3);
     }
     public void QuitGame()
     {

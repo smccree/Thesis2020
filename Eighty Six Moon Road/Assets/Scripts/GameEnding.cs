@@ -8,10 +8,10 @@ public class GameEnding : MonoBehaviour
     public Animator anim;
     void Update()
     {
-        Debug.Log("not the end");
+        //Debug.Log("not the end");
         if(manager.isEnd)
         {
-            Debug.Log("the end");
+            //Debug.Log("the end");
             FadeToBlack();
         }   
     }

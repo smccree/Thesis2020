@@ -47,6 +47,16 @@ public class InputManager : MonoBehaviour
         
     }
 
+    public void Cancel()
+    {
+        //close input window s/t players have a chance to re-read
+        //display pop up at the end that says 'have another look and press enter' or something
+
+        inputText.text = null;
+        
+        CloseInputWindow();
+        dialogueBox.CancelDialogue();     
+    }
     public void CloseInputWindow()
     {
         I_animator.SetBool("IsOpen", false); //need set active = false to stop it from reading keyboard button presses

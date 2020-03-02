@@ -40,12 +40,17 @@ public class DialogueManager : MonoBehaviour
     private string[] dialogue_options;
     private string key;
 
-    // Start is called before the first frame update
+    //Control reminder for cancelling conversation
+    public GameObject enterControls;
+
+    //ending button - for end drama
+    public GameObject endingbutton;
     void Start()
     {
         sentences = new Queue<string>();
         useAI = true;
         isEnd = false;
+        endingbutton.SetActive(false);
         //useAI = false;
 
     }
@@ -106,6 +111,7 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(TypeSentence(sentence));
 
         Debug.Log(sentence);//show the sentence
+        DisplayNextSentence();
     }
 
     IEnumerator TypeSentence(string sentence)
@@ -162,13 +168,22 @@ public class DialogueManager : MonoBehaviour
 
         nameText.text = DialogueLines.Name;//person's name
 
-        //Initialize Key-Value Dictionary Pairs
-        //DialogueLines.Initialize();
-
         //get the dialogue options and keywords for this room trigger
         dialogue_options = DialogueLines.dict_lines[key];
         keywords = DialogueLines.dict_keywords[key];
-
+        /*
+        if(key == "ending")
+        {
+            EndingDialogue(dialogue_options, keywords);
+            endingbutton.SetActive(true);
+        }
+        else
+        {
+            //Display opening line
+            dialogueText.text = dialogue_options[0];
+            Debug.Log(dialogueText.text);
+        }
+        */
         //Display opening line
         dialogueText.text = dialogue_options[0];
         Debug.Log(dialogueText.text);
@@ -209,28 +224,7 @@ public class DialogueManager : MonoBehaviour
         //0 keywords found - placeholder: chooses a random line from a set of 5 agitated responses.
         if (num_keys == 0)
         {
-            int randomchoice = Random.Range(0, 4);
-
-            if(randomchoice == 0)
-            {
-                finalresponse = DialogueLines.Voice_Failure_1;
-            }
-            else if(randomchoice == 1)
-            {
-                finalresponse = DialogueLines.Voice_Failure_2;
-            }
-            else if(randomchoice == 2)
-            {
-                finalresponse = DialogueLines.Voice_Failure_3;
-            }
-            else if(randomchoice == 3)
-            {
-                finalresponse = DialogueLines.Voice_Failure_4;
-            }
-            else
-            {
-                finalresponse = DialogueLines.Voice_Failure_5;
-            }
+            finalresponse = dialogue_options[1];
         }
 
         //only 1 keyword found
@@ -245,7 +239,7 @@ public class DialogueManager : MonoBehaviour
             finalresponse = dialogue_options[3];
         }
 
-        //all 3 keywords found (accounts for multiple instances of the same word in a phrase).
+        //3+ keywords found (accounts for multiple instances of the same word in a phrase).
         else if(num_keys >= 3)
         {
             finalresponse = dialogue_options[4];
@@ -286,5 +280,75 @@ public class DialogueManager : MonoBehaviour
             }
         }
         return 0; //found nothing so return 0
+    }
+
+    public void CancelDialogue()
+    {
+        //Close input window: let players re-read things before answering prompt
+
+        //cancel response:
+        int randomchoice = Random.Range(0, 3);
+
+        string cancel = null;
+
+        if(randomchoice == 0)
+        {
+            cancel = DialogueLines.Voice_Cancel_1;
+        }
+
+        else if (randomchoice == 1)
+        {
+            cancel = DialogueLines.Voice_Cancel_2;
+        }
+
+        else if (randomchoice == 2)
+        {
+            cancel = DialogueLines.Voice_Cancel_3;
+        }
+
+        //Display AI response as pop-up 
+        popupManager.DictionaryPopup(DialogueLines.Name, cancel);
+        enterControls.GetComponent<ControlManager>().ShowControls();
+        Unfreeze();
+    }
+
+    public void EndingDialogue(string[] options, string[] keywords)
+    {
+        nameText.text = DialogueLines.Name_Revealed;//person's name
+
+        sentences.Clear();
+        foreach (string sentence in options)
+        {
+            sentences.Enqueue(sentence);
+        }
+        Debug.Log("Start Dialogue sentences: " + sentences.Count);
+        EndingDisplayNextSentence();
+    }
+
+    public void EndingDisplayNextSentence()
+    {
+        //check to see if there are more sentences to show
+        Debug.Log("Display Next Sentence sentences: " + sentences.Count);
+
+        if (sentences.Count == 0)
+        {
+            EndingPopup(); //no more sentences so close dialogue box
+            return;
+        }
+        string sentence = sentences.Dequeue();
+        Debug.Log("Num sentences after dequeue: " + sentences.Count);
+        StopAllCoroutines();
+
+        //type letters 1 by 1 on screen
+        StartCoroutine(TypeSentence(sentence));
+
+        Debug.Log(sentence);//show the sentence
+    }
+
+    public void EndingPopup()
+    {
+        //Display AI response as pop-up 
+        popupManager.DictionaryPopup(DialogueLines.Name, DialogueLines.Voice_EndDrama_10);
+        isEnd = true; //fancy fade to black stuff
     }
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
