@@ -40,7 +40,7 @@ public class DialogueLines : MonoBehaviour
     
     //-------------------------------------------------------- The Strings ------------------------------------------------------------------
 
-    public static string Name = "Mysterious Voice";
+    public static string Name = "Echoing Voice";
     public static string Name_Revealed = "Rebecca Stearn";
 
     public static string Entrance_OP = "I hear something ... can it be, a visitor? It's been so long! So then, who are you? What are you doing here?";
