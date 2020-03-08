@@ -170,12 +170,12 @@ public class DialogueLines : MonoBehaviour
     public static string Voice_EndDrama_10 = "It's up to you, now more than ever. I only have one thing left to say - Goodbye.";
     public static string[] EndDrama_Keywords = { "goodbye" };
 
-    public static string End_OP = "I know I said I'd rather not know, but thank you for telling me anyway. I mean it. Maybe now I won't be bound to this place. Maybe I can leave.";
+    public static string End_OP = "We've searched this house up and down, and I think I finally see the full picture. Thank you, Eliza. You've been a true friend throughout all this. I'm sorry it's your family we're dealing with, but I hope it won't stop you from doing what's right. Will you promise me - you'll hold Frederick accountable, somehow?";
     public static string End_0 = "It's up to you, now more than ever, to bring Fred to justice. I only have one thing left to say - Goodbye.";
     public static string End_1 = "It's up to you, now more than ever, to bring Fred to justice. I only have one thing left to say - Goodbye.";
     public static string End_2 = "It's up to you, now more than ever, to bring Fred to justice. I only have one thing left to say - Goodbye.";
     public static string End_3 = "It's up to you, now more than ever, to bring Fred to justice. I only have one thing left to say - Goodbye.";
-    public static string[] End_Keywords = { "goodbye" };
+    public static string[] End_Keywords = { "yes" };
 
     //Initialize arrays where the dialogue lines will be stored
     static string[] EntVal = { Entrance_OP, Entrance_0, Entrance_1, Entrance_2, Entrance_3 };
