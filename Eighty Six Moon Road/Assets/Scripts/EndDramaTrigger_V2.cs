@@ -8,6 +8,7 @@ public class EndDramaTrigger_V2 : MonoBehaviour
     public int num_triggered = 0;
     public GameObject end;
     bool endtriggered;
+    int count = 300;
     void Start()
     {
         end.SetActive(false);
@@ -21,9 +22,23 @@ public class EndDramaTrigger_V2 : MonoBehaviour
         {
             if (num_triggered >= 12)
             {
-                end.SetActive(true);
-                endtriggered = true;
+                StartCoroutine("EndCountdown");
+                if(count <= 0)
+                {
+                    StopAllCoroutines();
+                    end.SetActive(true);
+                    endtriggered = true;
+                }
             }
+        }
+    }
+
+    IEnumerator EndCountdown()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            count--;
         }
     }
 }

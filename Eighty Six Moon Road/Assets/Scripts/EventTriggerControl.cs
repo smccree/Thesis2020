@@ -31,7 +31,7 @@ public class EventTriggerControl : MonoBehaviour
                 eventTrigger = collider.gameObject;
                 eventTrigger.GetComponent<ConversationTrigger>().TriggerDialogue();
                 Destroy(eventTrigger);
-                endDrama.num_triggered++;
+                //endDrama.num_triggered++;
             }
             
         }

@@ -33,7 +33,7 @@ public class ControlManager : MonoBehaviour
         controls.SetActive(true);
 
         StopAllCoroutines();
-        count = 10;
+        count = 5;
 
         StartCoroutine("Countdown");
     }

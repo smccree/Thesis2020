@@ -20,8 +20,8 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-        useAI = true;
-        //useAI = false;
+        //useAI = true;
+        useAI = false;
     }
     public void ReceiveInput()
     {
@@ -34,7 +34,11 @@ public class InputManager : MonoBehaviour
         inputText.text = null;
 
         Debug.Log(userInput);
-        if(useAI)
+
+        CloseInputWindow();
+        dialogueBox.ShowResponse(userInput);
+        /*
+        if(useAI == true)
         {
             CloseInputWindow();
             dialogueBox.ShowResponse(userInput);
@@ -44,7 +48,7 @@ public class InputManager : MonoBehaviour
             CloseInputWindow();
             dialogueBox.Unfreeze();
         }
-        
+        */
     }
 
     public void Cancel()

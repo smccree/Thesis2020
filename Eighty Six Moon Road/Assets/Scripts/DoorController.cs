@@ -17,15 +17,15 @@ public class DoorController : MonoBehaviour
     {
         if(door == "study")
         {
-            popupWindow.DictionaryPopup(DialogueLines.Name, DialogueLines.Locked_Study);
+            popupWindow.DictionaryPopup(DialogueLines.Name_Revealed, DialogueLines.Locked_Study);
         }
         else if (door == "cellar")
         {
-            popupWindow.DictionaryPopup(DialogueLines.Name, DialogueLines.Locked_Cellar);
+            popupWindow.DictionaryPopup(DialogueLines.Name_Revealed, DialogueLines.Locked_Cellar);
         }
         else if (door == "basement")
         {
-            popupWindow.DictionaryPopup(DialogueLines.Name, DialogueLines.Locked_Basement);
+            popupWindow.DictionaryPopup(DialogueLines.Name_Revealed, DialogueLines.Locked_Basement);
         }
     }
 }

@@ -12,7 +12,7 @@ public class TriggerProperties : MonoBehaviour
     public UnityStandardAssets.Characters.FirstPerson.FirstPersonController fps;
 
     public bool readytogo;
-    public void Start()
+    public void Awake()
     {
         if(this.name == "EntranceTrigger")
         {
@@ -21,6 +21,7 @@ public class TriggerProperties : MonoBehaviour
         }
         else
         {
+            Debug.Log(this.name + " is ready to go");
             readytogo = false;
         }
     }

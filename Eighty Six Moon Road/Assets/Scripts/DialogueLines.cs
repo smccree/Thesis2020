@@ -43,88 +43,88 @@ public class DialogueLines : MonoBehaviour
     public static string Name = "Echoing Voice";
     public static string Name_Revealed = "Rebecca Stearn";
 
-    public static string Entrance_OP = "I hear something ... can it be, a visitor? It's been so long! So then, who are you? What are you doing here?";
-    public static string Entrance_0 = "So someone didn't ask you to come here? I find it rather unlikely that you just wandered into this house on your own.";
-    public static string Entrance_1 = "Nothing makes sense here, does it? Well no matter. Now that you're here we can work together. Take a look around, let me know if you find anything.";
-    public static string Entrance_2 = "I might be the one you came here looking for. If we can find out what happened to me, that solves both our problems. Well, take a look around then. Something in this house must have the information we're looking for.";
-    public static string Entrance_3 = "You're a private investigator? That's perfect - you can help me! If you're looking for someone, well then I'm probably her. It would help if I could remember anything else, though. Well, take a look around then. Something in this house must have the information we're looking for.";
-    public static string[] Entrance_Keywords = { "private", "investigator", "HA", "H", "A", "searching", "missing", "sister", "woman", "person" };
+    public static string Entrance_OP = "Wait, was that the door? Finally! Who are you? What are you doing here?";
+    public static string Entrance_0 = "Hold on... yes, it is you! Eliza! I have no idea why I got this way, but perhaps now that you're here you could look around for me. Maybe I'll remember something.";
+    public static string Entrance_1 = "Hold on... the memories are fuzzy, but I think - yes, it IS you! Eliza! Thank goodness, I can hardly believe it. Clearly something has happened to me while you were away. I need your help trying to figure it all out. Take a look around and tell me what you find.";
+    public static string Entrance_2 = "Eliza! Thank goodness, how long has it been? Oh - no matter. Clearly, something happened to me while you were away. I can't remember anything. It's all such a blur. Now that you're back, can you have a look around for me? Tell me if you find anything.";
+    public static string Entrance_3 = "Eliza, it can't be! I was sure I'd never see you again. Last thing I can remember was settling in for the night, and writing in my diary. Next I knew, I was just ... a voice. Without a shape. And all my memories are scrambled somehow. You have to help me, show me if you find anything and it might shake something loose.";
+    public static string[] Entrance_Keywords = { "Eliza", "came", "back", "home", "Freddie", "Rebecca", "freddie", "rebecca", "eliza", "trip" };
 
-    public static string Dining_OP = "It's so dark in here, even with all these windows. There must be a storm brewing outside. Have you found anything in here?";
-    public static string Dining_0 = "That's a little disappointing. Maybe you should look again.";
-    public static string Dining_1 = "'Hannah'... could that be the 'H.A.' who sent you here?";
-    public static string Dining_2 = "I've been thinking about that bible. 'An eye for an eye, and a tooth for a tooth, huh.' It seems fair on the outset, but it's quite cruel, when you think about it. I'd rather live and let live. Ironic, given the circumstances.";
-    public static string Dining_3 = "Hold on a moment. Those names sound familiar. Hannah and Rebecca ... sisters. Hannah Ainsworth and Rebecca Stearn! Yes! I must have known them.";
-    public static string[] Dining_Keywords = { "bible", "note", "Hannah", "Rebecca", "Paris", "paris", };
+    public static string Dining_OP = "Do you remember our first dinner in here? Let me think ... Alberta brought us pie and roast potatoes. Quite a feast, I remembered thinking. Was that a letter on the table? Was there anything else in here?";
+    public static string Dining_0 = "Are you certain? Maybe you should look again.";
+    public static string Dining_1 = "I shudder to think how Hannah would feel if she saw me now. I do hope she's all right.";
+    public static string Dining_2 = "Hannah! I hope she's all right. I wrote her back, I think. Now, what did I say? Hmm... I can't seem to place it. I shudder to think how Hannah would feel if she saw me now.";
+    public static string Dining_3 = "Hannah! I hope she's all right. I wrote her back, I think. Now, what did I say? Hmm... I said we leave at the end of August, with your friend Alice and her chaperone. I shudder to think how she would feel if she saw me now.";
+    public static string[] Dining_Keywords = { "bible", "note", "Hannah", "Rebecca", "Paris", "paris", "letter", "sister", "hannah", "rebecca" };
 
-    public static string Library_OP = "Nothing so comforting as rows of books and a shawl to wrap around one's shoulders, I think. Did you get a chance to read that note there on the table?";
-    public static string Library_0 = "Oh come now, be serious! I need to know what it says. I might remember something.";
-    public static string Library_1 = "So Rebecca was staying here for the summer. The house is quite empty now, save the two of us. Where has everyone gone?";
-    public static string Library_2 = "I suppose Rebecca Stearn is a writer, then. Kind of Frederick to invite her to stay for the summer.";
-    public static string Library_3 = "Frederick Beale ... I think I remember him. Always wore green. He used to sit in this chair, reading, for hours.";
-    public static string[] Library_Keywords = { "Rebecca", "Frederick", "write", "book", "visit", "summer", "Fred", "fred", "frederick" };
+    public static string Library_OP = "I miss sitting in here, reading. With a shawl around my shoulders. It seems like only yesterday I was doing just that. What did you find in here?";
+    public static string Library_0 = "Oh come now, be serious! I need to know what you found. I might remember something.";
+    public static string Library_1 = "I could hardly believe it when Frederick invited me to stay with you both. I was quite anxious to finish my novel. The arrangement had perfect timing.";
+    public static string Library_2 = "I could hardly believe that Beale and Crofton wanted to publish my book. I mean, I'm just some nobody. After all, they published Snicket. Charlie Snicket!";
+    public static string Library_3 = "I remember something. A conversation between Fredrick and I. He said they needed another big success like Somber Home. They were counting on me. He and ... Stanley, wasn't it?";
+    public static string[] Library_Keywords = { "Rebecca", "Frederick", "write", "book", "visit", "summer", "Fred", "fred", "frederick", "charlie", "Charlie", "snicket", "Snicket", "somber", "Somber", "home", "Home" };
 
-    public static string Study_OP = "This must be Frederick's office. I was never allowed in here. I always wondered what I might find.";
-    public static string Study_0 = "Look harder. I have a bad feeling.";
-    public static string Study_1 = "Things don't seem to be going well for Beale and Crofton. From that letter it doesn't seem like Stanley is taking it well.";
-    public static string Study_2 = "So Stanley was pressuring Eliza into marrying him? And Frederick just went along with it? The gall of some men - I swear!";
-    public static string Study_3 = "I remember Stanley! Always a snotfaced little shnouzer. Always yapping around crying for attention and getting angry when he wouldn't get his way.";
-    public static string[] Study_Keywords = { "ledger", "Stanley", "Crofton", "publishing", "profits", "losses", "Eliza", "rejection" };
+    public static string Study_OP = "Frederick's office. I was never allowed in here. He used go on about separating work from his personal life. I'm sure you remember. But I always wondered what I might find behind that door.";
+    public static string Study_0 = "Eliza, would you mind looking again? As I'm sure you know, this is important. We're getting closer to the truth. I can feel it.";
+    public static string Study_1 = "Stanley doesn't seem to be taking your rejection well. That sounds like he was trying to blackmail Frederick into forcing you both to wed. I suppose it didn't work, though.";
+    public static string Study_2 = "I still can't believe Frederick would go along with such a nasty scheme. The gall of some men, I swear! It should be up to you to make your own choice in who to marry. In a perfect world, that is. Perhaps not our world, though.";
+    public static string Study_3 = "Hold on, Eliza. Is that ... a letter from my sister on the floor? What is that doing in here? I certainly don't remember seeing it. Did I just forget? I'm so confused. This is all such a mess. Why would Frederick hide that from me?";
+    public static string[] Study_Keywords = { "ledger", "Stanley", "Crofton", "publishing", "profits", "losses", "Eliza", "rejection", "proposal", "reject", "rejected", "stanley" };
 
-    public static string Rebecca_OP = "Hold on a minute. I think ... this was MY bedroom. I think I'm Rebecca! I feel a bit sick, now. Tell me, what did I write in my diary?";
+    public static string Rebecca_OP = "My room. I still can't place what I was doing the last night before I turned into ... this. Whatever 'this' is. Finishing my manuscript, maybe. Or writing in my diary.";
     public static string Rebecca_0 = "That doesn't sound like something I'd write. Are you trying to pull one over on me?";
-    public static string Rebecca_1 = "I think I remember a feeling. Butterflies in my stomach, walking into this house. Meeting everyone. I was so hopeful.";
-    public static string Rebecca_2 = "You think I fancy Frederick? I-I have no idea what you're talking about. How is this relevant? Anyway let's move on. Best not to dwell on this nonsense.";
-    public static string Rebecca_3 = "I-I used to have tea every night before bed. Without fail. But that tea cup...I don't know how it would have fallen. I'm always so careful. Even remembering who I am, it's all still so hazy.";
-    public static string[] Rebecca_Keywords = { "tea", "cup", "broken", "excited", "frederick", "Frederick", "Fred", "fred", "Eliza", "eliza", "like" };
+    public static string Rebecca_1 = "I was so hopeful, walking into this house for the first time. I wish I could tell that girl to turn around. Leave this place and never come back, novel be damned. I don't mean to offend you, but if I had, I'd probably be better off.";
+    public static string Rebecca_2 = "I-I used to have tea every night before bed. Without fail. But that tea cup... I don't know how it would have fallen. I'm always so careful.";
+    public static string Rebecca_3 = "I'm trying to remember. I used to have a cup of tea every night before bed. Think... I-I felt lightheaded. I dropped the cup. I'm sorry, nothing else is coming to me.";
+    public static string[] Rebecca_Keywords = { "tea", "cup", "teacup", "broken", "excited", "frederick", "Frederick", "Fred", "fred", "Eliza", "eliza", "like", "fancy", "floor", "fell" };
 
-    public static string Drawing_OP = "Have you ever been to a party in a room like this? I never understood the appeal, to be honest. Balls and dancing require too much attention.";
-    public static string Drawing_0 = "Ha ha. You've got quite the sense of humor. C'mon, now, there must be more here.";
-    public static string Drawing_1 = "Stanley seems a tad ... overbearing, to say the least.";
-    public static string Drawing_2 = "I hope Eliza had fun at the ball, even if Stanley was breathing down her neck.";
-    public static string Drawing_3 = "I think I remember something. Music, on a piano forte. And small glasses of champagne. I'd never been anywhere like that, before.";
+    public static string Drawing_OP = "We never did have that ball you wanted to have, come to think of it. Honestly I'm relieved. You know me, balls and dancing were never my specialties.";
+    public static string Drawing_0 = "Come, now, Eliza, there must be more here.";
+    public static string Drawing_1 = "I don't quite remember that night. But I hope you had fun at the ball, even if Stanley was breathing down your neck.";
+    public static string Drawing_2 = "I remember music on a piano forte. And small glasses of champagne. I'd never been anywhere like that before.";
+    public static string Drawing_3 = "I remember liking Alice. I think I was excited that we would all be in Paris together. I've never left England, you know. I suppose now I never will.";
     public static string[] Drawing_Keywords = { "ball", "invited", "Eliza", "eliza", "Stanley", "dance", "stanley", "alice", "Alice", "distract" };
 
-    public static string Eliza_OP = "This must be Eliza's room. I have an image of her sitting in this chair, writing letters.";
-    public static string Eliza_0 = "You don't seem very good at this. Perhaps read it over again.";
+    public static string Eliza_OP = "Your room is just the way you left it. You used to sit in that chair writing letters. I should say welcome home. A bit overdue, I suppose. Is there anything in here?";
+    public static string Eliza_0 = "Perhaps read it over again.";
     public static string Eliza_1 = "He actually wrote that? 'A delicate flower?' Please excuse me while I vomit.";
-    public static string Eliza_2 = "It seems that neither Stanley nor Fred know what's in Eliza's best interests. She's every right to be angry.";
-    public static string Eliza_3 = "Eliza actually laughed, come to think of it, when she got this letter. She was beyond words. And she really let Fred have it at suppertime.";
-    public static string[] Eliza_Keywords = { "Stanley", "Fred", "stanley", "fred", "scheming", "marry", "marriage", "proposal", "rejected", "plan", "mad" };
+    public static string Eliza_2 = "You have every right to be angry. I thought Frederick was supposed to be looking out for you. Instead it seems he was looking out for his pocketbook.";
+    public static string Eliza_3 = "I remember, didn't you laugh when you first read this letter? You were beyond words. And you really let Fred have it at supper. It was quite a row.";
+    public static string[] Eliza_Keywords = { "Stanley", "Fred", "stanley", "fred", "scheming", "marry", "marriage", "proposal", "rejected", "plan", "mad", "angry", "delicate", "flower" };
 
-    public static string Fred_OP = "Things are piecing together for me. My memories are still a touch vague, though. What was that you found on the nightstand?";
-    public static string Fred_0 = "Come now, be serious.";
-    public static string Fred_1 = "Opera tickets? That would make for a lovely evening.";
-    public static string Fred_2 = "An invitation from Fred to the Opera? I think I remember. It was a lovely time.";
-    public static string Fred_3 = "You know, I always thought Fred didn't like me, but then we went to the opera and had a grand old time. But he made me angry. We fought about something. I-I can't remember anything else.";
-    public static string[] Fred_Keywords = { "opera", "tickets", "ticket", "invited", "fred", "Fred" };
+    public static string Fred_OP = "Fred would be quite cross if he knew we were nosing about in his room. I wonder where he's off to tonight, come to think of it. What was that on the nightstand?";
+    public static string Fred_0 = "Come now, be serious. This is important.";
+    public static string Fred_1 = "Fred invited me to an Opera. I'd never been to one before. What did we see... 'Carmen,' I think. It was gruesome watching her die right on stage. The music was beautiful, but I've never been a fan of the macabre.";
+    public static string Fred_2 = "I remember, Fred invited me to see 'Carmen.' We sat alone, in a private box. I couldn't help but sit completely upright the whole time. And the opera itself, it was so macabre. Seeing the heroine die like that made me a bit nauseous.";
+    public static string Fred_3 = "It was all such an ostentatious affair, the opera. We saw 'Carmen,' and we were alone in a private box. I have no idea how much those tickets cost, and then the show itself was so gruesome. The heroine dies right on stage, in front of everybody. We got into a bit of a row when we got back. Quite an uncomfortable night.";
+    public static string[] Fred_Keywords = { "opera", "tickets", "ticket", "invited", "fred", "Fred", "note" };
 
-    public static string Dressing_OP = "A letter and a page that looks like it was torn from Fred's journal ... this doesn't bode well.";
+    public static string Dressing_OP = "I can't expect there's anything of note in here. It's just a bathing room after all. Wait - have you found something?";
     public static string Dressing_0 = "There must be more to this than what you've said. Read it again, would you?";
-    public static string Dressing_1 = "At the very least, I'm glad Eliza finally made it to Paris. But what a mess this all has become.";
-    public static string Dressing_2 = "I would never say something like that. Eliza's got it all wrong. I mean, clearly, something stopped me from going to Paris.";
-    public static string Dressing_3 = "I don't like any of this. Fred must have told Eliza I said all that. And I suppose that journal entry gives us the reason why.";
+    public static string Dressing_1 = "I am happy for you, you know. You've always wanted to see Paris. But I feel quite distraught that you believed I would call us mere business acquaintances. I think of you as a sister, afer all.";
+    public static string Dressing_2 = "I don't like any of this. Fred must have told you I said all that. And I suppose that other note gives us a reason why. But you must know that what this letter says is a lie. I think of you as a sister. And Fred... well I suppose I had quite complicated feelings about him.";
+    public static string Dressing_3 = "I remember something else. I went out to town with Fred. I don't remember where, but we got into a row afterward. He... he proposed to me! And I was angry because I'd told him earlier that I wouldn't marry until my writing took off. I thought he'd respect that, at least. But I was wrong.";
     public static string[] Dressing_Keywords = { "paris", "Paris", "stanley", "Stanley", "follow", "following", "disrespected", "spinster", "persuade", "marry" };
 
-    public static string Kitchen_OP = "Anything cooking in this kitchen? No? Not funny? Well you're no comic either.";
-    public static string Kitchen_0 = "Like I said, not funny.";
-    public static string Kitchen_1 = "I don't like the idea of going down for a cuppa and winding up with a mouthful of laudanum.";
-    public static string Kitchen_2 = "Laudanum is nasty stuff. I'm surprised you found a bottle. Even a touch of it is highly addictive. Too much of it, well....";
-    public static string Kitchen_3 = "I remember something else. My nightly cup of tea. Fred brought it up for me. I thought that was unusual and asked him where Alberta was. He said she had gone to visit family.";
+    public static string Kitchen_OP = "I used to chat with Alberta when she cleaned up after supper. I was always a bit of a night owl, staying awake reading or working on my book. I would make tea, and then go back upstairs.";
+    public static string Kitchen_0 = "There has to be more to this. Have you checked the cupboards?";
+    public static string Kitchen_1 = "Laudanum is nasty stuff. What were you doing with a bottle? Even a touch of it is highly addictive. I'm no professional and even I know the risks of taking some.";
+    public static string Kitchen_2 = "I remember something about that last night. Before I woke up like this. I didn't make any tea. I was so focused on finishing my book that I stayed holed up in my room.";
+    public static string Kitchen_3 = "I remember something else. My nightly cup of tea. I didn't make a cup that last night, I was so focused on finishing my novel, you see. But Fred brought me a cup of tea. He asked me to forgive him, about our fight. You don't think that he- No, he couldn't have spiked it. He wouldn't! .... Would he?";
     public static string[] Kitchen_Keywords = { "laudanum", "poison", "tea", "pot", "teapot", "teacup", "cup", "sleep" };
 
-    public static string Cellar_OP = "I changed my mind. Let's get out of here. I don't care about what happened in this place anymore. I don't want to know what you found.";
-    public static string Cellar_0 = "It's probably for the best, that I don't know. I don't want to remember.";
-    public static string Cellar_1 = "Why did you tell me? I told you I don't want to hear it. I didn't want to remember everything. But I do.";
-    public static string Cellar_2 = "Why did you tell me? I told you I don't want to hear it. I didn't want to remember everything. But I do.";
-    public static string Cellar_3 = "Why did you tell me? I told you I don't want to hear it. I didn't want to remember everything. But I do.";
-    public static string[] Cellar_Keywords = { "crate", "body", "empty", "dragged", "street", "deliver", "work", "dissect"  };
+    public static string Cellar_OP = "This is the last of it. The last piece in this puzzle. I'm sure it must have hurt you, Eliza, finding out all this. But I need you to tell me what you found. It's the only way I can move on.";
+    public static string Cellar_0 = "I know this is hard, Eliza. I'd be suprised if it were easy, after all.";
+    public static string Cellar_1 = "I remember now. All of it. Falling asleep that last night, and not waking up again.";
+    public static string Cellar_2 = "I remember now. All of it. Falling asleep that last night, and not waking up again. Fred ... he drugged my tea. And brought me down here.";
+    public static string Cellar_3 = "I remember now. All of it. Falling asleep that last night, and not waking up again. Fred ... he drugged my tea. And brought me down here. He must have... delivered my body to someone. I don't want to think about what they must have done with it.";
+    public static string[] Cellar_Keywords = { "crate", "body", "empty", "dragged", "street", "deliver", "work", "dissect" };
 
-    public static string Housekeeper_OP = "Alberta's room. She was a lovely woman. I shudder to think that she was involved with all this.";
+    public static string Housekeeper_OP = "Alberta's room. She was a lovely woman. You don't think she was involved in this, do you?";
     public static string Housekeeper_0 = "You didn't find anything? Are you sure?";
-    public static string Housekeeper_1 = "That's an odd favor to ask of someone.";
-    public static string Housekeeper_2 = "Alberta went along with this? I suppose it makes sense. She's been employed with the Beales for years.";
-    public static string Housekeeper_3 = "I don't want to hear any more.";
+    public static string Housekeeper_1 = "Alberta went along with this? I can hardly believe it. She was always so kind. We used to talk quite a bit, after supper. She washed the dishes, and I would dry them.";
+    public static string Housekeeper_2 = "Alberta went along with this? I can hardly believe it. But then again, she's been employed with your family for years. I'd only known her for a few months.";
+    public static string Housekeeper_3 = "Alberta went along with this? I can hardly believe it. But then again, she's been employed with your family for years. What would you do if the one person who could make your life difficult asked you for an impossible favor?";
     public static string[] Housekeeper_Keywords = { "note", "Fred", "crate", "sons", "deliver", "ask", "bring", "back", "security" };
 
     public static string Popup_Lore_1 = "Line about book";
@@ -138,9 +138,9 @@ public class DialogueLines : MonoBehaviour
     public static string Popup_Lore_9 = "Line about Stanley";
     public static string Popup_Lore_10 = "Line about Fred";
 
-    public static string Locked_Study = "Locked, huh? I'm sure the key is around here somewhere.";
+    public static string Locked_Study = "Locked, huh? I'm sure the key is somewhere in this house.";
     public static string Locked_Basement = "This is quite an odd looking door. It seems as though you'll need three keys to open it.";
-    public static string Locked_Cellar = "Another locked door? This house has more security than a bank vault.";
+    public static string Locked_Cellar = "Isn't this where you store food? Why lock this door, of all places?";
 
     public static string Voice_Failure_1 = "You are an excellent debugger";
     public static string Voice_Failure_2 = "You go girl! Get that game did!";

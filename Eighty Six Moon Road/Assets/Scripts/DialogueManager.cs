@@ -45,13 +45,15 @@ public class DialogueManager : MonoBehaviour
 
     //ending button - for end drama
     public GameObject endingbutton;
+    public EndDramaTrigger_V2 endspawner;
+
     void Start()
     {
         sentences = new Queue<string>();
-        useAI = true;
+        //useAI = true;
         isEnd = false;
         endingbutton.SetActive(false);
-        //useAI = false;
+        useAI = false;
 
     }
     //steps to do this:
@@ -62,35 +64,32 @@ public class DialogueManager : MonoBehaviour
     {
         //----------------------------------Separating Simple Dialogue system vs. AI based one -------------------------------------------------
 
-        if (useAI)
+        Debug.Log("Starting AI Dialogue");
+        key = player.GetComponent<EventTriggerControl>().eventTrigger.GetComponent<TriggerProperties>().trigger_keyword;
+        Debug.Log("this is the keyword: " + key);
+        AIDialogue(key);
+        
+        /*
+        Debug.Log("Starting Simple Dialogue");
+        fps.canMove = false; //pause movement
+        menu.canPause = false; //can't pause
+
+        dialogueBox.SetActive(true); //just in case it's inactive and we can't use it again
+
+        //temporarily disable while dialogue window is open
+        inputManager.inputWindow.SetActive(false);
+        D_animator.SetBool("IsOpen", true); //open dialogue box animation
+
+        nameText.text = dialogue.name;//person's name
+
+        sentences.Clear();
+        foreach (string sentence in dialogue.sentences)
         {
-            Debug.Log("Starting AI Dialogue");
-            key = player.GetComponent<EventTriggerControl>().eventTrigger.GetComponent<TriggerProperties>().trigger_keyword;
-            Debug.Log("this is the keyword: " + key);
-            AIDialogue(key);
+            sentences.Enqueue(sentence);
         }
-        else
-        {
-            Debug.Log("Starting Simple Dialogue");
-            fps.canMove = false; //pause movement
-            menu.canPause = false; //can't pause
-
-            dialogueBox.SetActive(true); //just in case it's inactive and we can't use it again
-
-            //temporarily disable while dialogue window is open
-            inputManager.inputWindow.SetActive(false);
-            D_animator.SetBool("IsOpen", true); //open dialogue box animation
-
-            nameText.text = dialogue.name;//person's name
-
-            sentences.Clear();
-            foreach (string sentence in dialogue.sentences)
-            {
-                sentences.Enqueue(sentence);
-            }
-            Debug.Log("Start Dialogue sentences: " + sentences.Count);
-            DisplayNextSentence();
-        }      
+        Debug.Log("Start Dialogue sentences: " + sentences.Count);
+        DisplayNextSentence();
+        */    
     }
 
     public void DisplayNextSentence()
@@ -166,24 +165,20 @@ public class DialogueManager : MonoBehaviour
         inputManager.inputWindow.SetActive(false);
         D_animator.SetBool("IsOpen", true); //open dialogue box animation
 
-        nameText.text = DialogueLines.Name;//person's name
+        if( key == "entrance")
+        {
+            nameText.text = DialogueLines.Name;//person's name
+        }
+        else
+        {
+            nameText.text = DialogueLines.Name_Revealed;
+        }
+        
 
         //get the dialogue options and keywords for this room trigger
         dialogue_options = DialogueLines.dict_lines[key];
         keywords = DialogueLines.dict_keywords[key];
-        /*
-        if(key == "ending")
-        {
-            EndingDialogue(dialogue_options, keywords);
-            endingbutton.SetActive(true);
-        }
-        else
-        {
-            //Display opening line
-            dialogueText.text = dialogue_options[0];
-            Debug.Log(dialogueText.text);
-        }
-        */
+
         //Display opening line
         dialogueText.text = dialogue_options[0];
         Debug.Log(dialogueText.text);
@@ -221,34 +216,43 @@ public class DialogueManager : MonoBehaviour
         num_keys += CompareToKeys(current_word, keywords);
 
         //time to choose the response
-        //0 keywords found - placeholder: chooses a random line from a set of 5 agitated responses.
-        if (num_keys == 0)
-        {
-            finalresponse = dialogue_options[1];
-        }
-
-        //only 1 keyword found
-        else if (num_keys == 1)
+        if(!useAI)
         {
             finalresponse = dialogue_options[2];
         }
 
-        //only 2 keywords found
-        else if (num_keys == 2)
-        {
-            finalresponse = dialogue_options[3];
-        }
-
-        //3+ keywords found (accounts for multiple instances of the same word in a phrase).
-        else if(num_keys >= 3)
-        {
-            finalresponse = dialogue_options[4];
-        }
-
         else
         {
-            finalresponse = "Whoops! Something went wrong. Debug.";
+            //0 keywords found - placeholder: chooses a random line from a set of 5 agitated responses.
+            if (num_keys == 0)
+            {
+                finalresponse = dialogue_options[1];
+            }
+
+            //only 1 keyword found
+            else if (num_keys == 1)
+            {
+                finalresponse = dialogue_options[2];
+            }
+
+            //only 2 keywords found
+            else if (num_keys == 2)
+            {
+                finalresponse = dialogue_options[3];
+            }
+
+            //3+ keywords found (accounts for multiple instances of the same word in a phrase).
+            else if (num_keys >= 3)
+            {
+                finalresponse = dialogue_options[4];
+            }
+
+            else
+            {
+                finalresponse = "Whoops! Something went wrong. Debug.";
+            }
         }
+        
         return finalresponse;
     }
 
@@ -259,13 +263,14 @@ public class DialogueManager : MonoBehaviour
         Debug.Log(response);
 
         //Display AI response as pop-up 
-        popupManager.DictionaryPopup(DialogueLines.Name, response);
+        popupManager.DictionaryPopup(DialogueLines.Name_Revealed, response);
         if(key == "ending")
         {
             isEnd = true; //fancy fade to black stuff
         }
         else
         {
+            endspawner.num_triggered++;
             Unfreeze();
         }
     }
