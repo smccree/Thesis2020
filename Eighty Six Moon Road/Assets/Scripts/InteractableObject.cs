@@ -69,7 +69,6 @@ public class InteractableObject : MonoBehaviour
         //show a text UI popup /readable
         else if(currentobj.name.Contains("Note"))
         {
-            currentobj.GetComponent<TextUI>().HideLabel();
             label = false;
             currentobj.GetComponent<TextUI>().ShowTextUI();
         }
@@ -120,7 +119,6 @@ public class InteractableObject : MonoBehaviour
         //v1 - lore cubes
         else if (currentobj.name.Contains("LoreCube"))
         {
-            currentobj.GetComponent<TextUI>().HideLabel();
             label = false;
             currentobj.GetComponent<TextUI>().ShowTextUI();
             currentobj.GetComponent<LoreObject>().interacted = true;

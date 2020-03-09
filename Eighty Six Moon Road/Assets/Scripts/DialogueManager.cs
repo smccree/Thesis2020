@@ -65,6 +65,10 @@ public class DialogueManager : MonoBehaviour
         //----------------------------------Separating Simple Dialogue system vs. AI based one -------------------------------------------------
 
         Debug.Log("Starting AI Dialogue");
+
+        //clear any dialogue pop ups on screen
+        popupManager.popupDialogueBox.SetActive(false);
+
         key = player.GetComponent<EventTriggerControl>().eventTrigger.GetComponent<TriggerProperties>().trigger_keyword;
         Debug.Log("this is the keyword: " + key);
         AIDialogue(key);
