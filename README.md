@@ -13,3 +13,11 @@ In Eighty-Six Moon Road, the player embodies the role of 'private investigator' 
 
 ### Project Specs:
 This game is being built in Unity 3D with a majority of assets sourced from the Unity Asset store. Code is written in Visual Studio C#.
+
+### Running and Installation Instructions
+1. Navigate to this google drive folder: 
+2. download zip file (most recent build)
+3. Unzip folder, navigate to "Eighty Six Moon Road.exe"
+4. Run the .exe file
+
+#### As this game is currently in development, there are quite a few bugs.
