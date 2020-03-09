@@ -47,6 +47,20 @@ public class DialogueManager : MonoBehaviour
     public GameObject endingbutton;
     public EndDramaTrigger_V2 endspawner;
 
+    //bools to keep track of whether or not we've finished this keyword's conversation
+    private bool entrance;
+    private bool dining;
+    private bool library;
+    private bool study;
+    private bool rebecca;
+    private bool drawing;
+    private bool fred;
+    private bool eliza;
+    private bool dressing;
+    private bool kitchen;
+    private bool house;
+    private bool cellar;
+
     void Start()
     {
         sentences = new Queue<string>();
@@ -55,6 +69,18 @@ public class DialogueManager : MonoBehaviour
         endingbutton.SetActive(false);
         useAI = false;
 
+        entrance = false;
+        dining = false;
+        library = false;
+        study = false;
+        rebecca = false;
+        drawing = false;
+        fred = false;
+        eliza = false;
+        dressing = false;
+        kitchen = false;
+        house = false;
+        cellar = false;
     }
     //steps to do this:
     //1: pause player movement (enter key + keyboard type become active)
@@ -160,8 +186,6 @@ public class DialogueManager : MonoBehaviour
         that should be read into the method from the DialogueLines class*/
     public void AIDialogue(string key)
     {
-        Debug.Log("Starting AI conversation");
-
         fps.canMove = false; //pause movement
         menu.canPause = false; //can't pause
 
@@ -178,14 +202,12 @@ public class DialogueManager : MonoBehaviour
             nameText.text = DialogueLines.Name_Revealed;
         }
         
-
         //get the dialogue options and keywords for this room trigger
         dialogue_options = DialogueLines.dict_lines[key];
         keywords = DialogueLines.dict_keywords[key];
 
         //Display opening line
         dialogueText.text = dialogue_options[0];
-        Debug.Log(dialogueText.text);
     }
 
     /*Chooses the next line of dialogue based on the player's text input
@@ -264,7 +286,6 @@ public class DialogueManager : MonoBehaviour
     {
         //Generate response from AI to show player
         string response = ChooseResponse(keywords, dialogue_options, player_input);
-        Debug.Log(response);
 
         //Display AI response as pop-up 
         popupManager.DictionaryPopup(DialogueLines.Name_Revealed, response);
@@ -274,7 +295,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            endspawner.num_triggered++;
+            SetConversationStatus();
             Unfreeze();
         }
     }
@@ -316,7 +337,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         //Display AI response as pop-up 
-        popupManager.DictionaryPopup(DialogueLines.Name, cancel);
+        popupManager.DictionaryPopup(DialogueLines.Name_Revealed, cancel);
         enterControls.GetComponent<ControlManager>().ShowControls();
         Unfreeze();
     }
@@ -359,5 +380,117 @@ public class DialogueManager : MonoBehaviour
         //Display AI response as pop-up 
         popupManager.DictionaryPopup(DialogueLines.Name, DialogueLines.Voice_EndDrama_10);
         isEnd = true; //fancy fade to black stuff
+    }
+
+    public void SetConversationStatus()
+    {
+        //inefficient, but band-aid solution. Works because there are only 12 triggers/booleans, but for a larger game this would be terrible.
+        if(key == "entrance")
+        {
+            if (entrance == false)
+            {
+                endspawner.num_triggered++;
+                entrance = true;
+
+            }
+        }
+        else if(key == "dining")
+        {
+            if (dining == false)
+            {
+                endspawner.num_triggered++;
+                dining = true;
+
+            }
+        }
+        else if (key == "library")
+        {
+            if (library == false)
+            {
+                endspawner.num_triggered++;
+                library = true;
+
+            }
+        }
+        else if(key == "study")
+        {
+            if (study == false)
+            {
+                endspawner.num_triggered++;
+                study = true;
+
+            }
+        }
+        else if(key == "drawing")
+        {
+            if (drawing == false)
+            {
+                endspawner.num_triggered++;
+                drawing = true;
+
+            }
+        }
+        else if (key == "rebecca")
+        {
+            if (rebecca == false)
+            {
+                endspawner.num_triggered++;
+                rebecca = true;
+
+            }
+        }
+        else if (key == "eliza")
+        {
+            if (eliza == false)
+            {
+                endspawner.num_triggered++;
+                eliza = true;
+
+            }
+        }
+        else if (key == "dressing")
+        {
+            if (dressing == false)
+            {
+                endspawner.num_triggered++;
+                dressing = true;
+
+            }
+        }
+        else if (key == "fred")
+        {
+            if (fred == false)
+            {
+                endspawner.num_triggered++;
+                fred = true;
+
+            }
+        }
+        else if (key == "cellar")
+        {
+            if (cellar == false)
+            {
+                endspawner.num_triggered++;
+                cellar = true;
+
+            }
+        }
+        else if (key == "kitchen")
+        {
+            if (kitchen == false)
+            {
+                endspawner.num_triggered++;
+                kitchen = true;
+                
+            }
+        }
+        else if (key == "housekeeper")
+        {
+            if(house == false)
+            {
+                endspawner.num_triggered++;
+                house = true;  
+            }
+        }
     }
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           

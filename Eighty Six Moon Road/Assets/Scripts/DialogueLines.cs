@@ -37,7 +37,8 @@ public class DialogueLines : MonoBehaviour
     //initializing the dictionary:
     public static Dictionary<string, string[]> dict_lines = new Dictionary<string, string[]>();
     public static Dictionary<string, string[]> dict_keywords = new Dictionary<string, string[]>();
-    
+    public static Dictionary<string, bool> dict_bools = new Dictionary<string, bool>();
+
     //-------------------------------------------------------- The Strings ------------------------------------------------------------------
 
     public static string Name = "Echoing Voice";
