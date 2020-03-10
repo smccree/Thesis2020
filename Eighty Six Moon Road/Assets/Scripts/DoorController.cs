@@ -11,7 +11,8 @@ public class DoorController : MonoBehaviour
     public bool _basementkey3;
 
     public DialoguePopup popupWindow;
-    // Start is called before the first frame update
+
+    public GameObject[] Doors;
     
     public void LockedDoor(string door)
     {
@@ -26,6 +27,27 @@ public class DoorController : MonoBehaviour
         else if (door == "basement")
         {
             popupWindow.DictionaryPopup(DialogueLines.Name_Revealed, DialogueLines.Locked_Basement);
+        }
+        else
+        {
+            popupWindow.DictionaryPopup(DialogueLines.Name_Revealed, DialogueLines.Locked_Other);
+        }
+    }
+
+    public void LockAllDoors()
+    {
+        foreach (GameObject door in Doors)
+        {
+            door.GetComponent<Door_Script>().forcedLock = true;
+            door.GetComponent<Door_Script>().CloseDoor();
+        }
+    }
+
+    public void UnlockDoors()
+    {
+        foreach(GameObject door in Doors)
+        {
+            door.GetComponent<Door_Script>().forcedLock = false;
         }
     }
 }

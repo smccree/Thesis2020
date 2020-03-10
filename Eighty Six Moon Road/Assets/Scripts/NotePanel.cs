@@ -5,9 +5,13 @@ using UnityEngine;
 public class NotePanel : MonoBehaviour
 {
     //the panel and also UI buttons for all the notes in the game
-    public GameObject panel;
+    public GameObject panel_main;
+    public GameObject panel_ground;
+    public GameObject panel_first;
+    public GameObject panel_second;
+    public GameObject panel_basement;
 
-    public GameObject intro;
+    public static GameObject intro;
     public static GameObject note1;
     public static GameObject note2;
     public static GameObject note3;
@@ -36,40 +40,95 @@ public class NotePanel : MonoBehaviour
     public static GameObject note26;
     public static GameObject note27;
 
-    public GameObject[] notes = { note1, note2, note3, note4, note5, note6, note7, note8, note9,
-        note10, note11, note12, note13, note14, note15, note16, note17, note18,
-        note19, note20, note21, note22, note23, note24, note25, note26, note27};
-    
+    public GameObject[] notes_ground = { intro, note1, note2, note3, note4, note5, note6, note7 };
+    public GameObject[] notes_first = { note8, note9, note10, note11, note12, note13 };
+    public GameObject[] notes_second = { note14, note15, note16, note17, note18, note19 };
+    public GameObject[] notes_basement = { note20, note21, note22, note23, note24, note25, note26, note27 };
     void Awake()
     {
-        panel.SetActive(false);
-        InitializePanel();
+        panel_main.SetActive(false);
+        panel_ground.SetActive(false);
+        panel_first.SetActive(false);
+        panel_second.SetActive(false);
+        panel_basement.SetActive(false);
+
+        InitializePanel(notes_ground);
+        InitializePanel(notes_first);
+        InitializePanel(notes_second);
+        InitializePanel(notes_basement);
     }
 
     private void Update()
     {
-        CheckForNotes();
+        CheckForNotes(notes_ground);
+        CheckForNotes(notes_first);
+        CheckForNotes(notes_second);
+        CheckForNotes(notes_basement);
     }
     public void ShowPanel()
     {
-        Debug.Log("Showing Panel");
-        panel.SetActive(true);
+        Debug.Log("Showing Panel Main");
+        panel_main.SetActive(true);
     }
     public void HidePanel()
     {
-        panel.SetActive(false);
+        panel_main.SetActive(false);
     }
 
-    void InitializePanel()
+    public void ShowPanelGround()
     {
-        intro.SetActive(true);
+        Debug.Log("Showing Panel Ground");
+        panel_ground.SetActive(true);
+    }
+    public void HidePanelGround()
+    {
+        panel_ground.SetActive(false);
+    }
+
+    public void ShowPanelFirst()
+    {
+        Debug.Log("Showing Panel First");
+        panel_first.SetActive(true);
+    }
+    public void HidePanelFirst()
+    {
+        panel_first.SetActive(false);
+    }
+    public void ShowPanelSecond()
+    {
+        Debug.Log("Showing Panel Second");
+        panel_second.SetActive(true);
+    }
+    public void HidePanelSecond()
+    {
+        panel_second.SetActive(false);
+    }
+    public void ShowPanelBasement()
+    {
+        Debug.Log("Showing Basement Panel");
+        panel_basement.SetActive(true);
+    }
+    public void HidePanelBasement()
+    {
+        panel_basement.SetActive(false);
+    }
+
+    void InitializePanel(GameObject[] notes)
+    {
         foreach (GameObject note in notes)
         {
-            note.SetActive(false);
+            if(note.name == "IntroButton")
+            {
+                note.SetActive(true);
+            }
+            else
+            {
+                note.SetActive(false);
+            }
         }
-    }    
+    }
 
-    void CheckForNotes()
+    void CheckForNotes(GameObject[] notes)
     {
         foreach (GameObject note in notes)
         {

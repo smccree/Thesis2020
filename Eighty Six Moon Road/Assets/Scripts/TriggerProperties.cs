@@ -21,7 +21,7 @@ public class TriggerProperties : MonoBehaviour
         }
         else
         {
-            Debug.Log(this.name + " is ready to go");
+            Debug.Log(this.name + " is not ready to go");
             readytogo = false;
         }
     }
@@ -29,6 +29,7 @@ public class TriggerProperties : MonoBehaviour
     {
         if(loreobj1.interacted && loreobj2.interacted && fps.canMove == true)
         {
+            Debug.Log(this.name + " is ready to go");
             readytogo = true;
         }
         else

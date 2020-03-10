@@ -61,6 +61,12 @@ public class DialogueManager : MonoBehaviour
     private bool house;
     private bool cellar;
 
+    //answer button - for returning to a conversation later
+    public GameObject answerbutton;
+
+    //one last thing: door controller script
+    public DoorController doorController;
+
     void Start()
     {
         sentences = new Queue<string>();
@@ -81,6 +87,8 @@ public class DialogueManager : MonoBehaviour
         kitchen = false;
         house = false;
         cellar = false;
+
+        answerbutton.SetActive(false);
     }
     //steps to do this:
     //1: pause player movement (enter key + keyboard type become active)
@@ -95,7 +103,11 @@ public class DialogueManager : MonoBehaviour
         //clear any dialogue pop ups on screen
         popupManager.popupDialogueBox.SetActive(false);
 
-        key = player.GetComponent<EventTriggerControl>().eventTrigger.GetComponent<TriggerProperties>().trigger_keyword;
+        string newkey = player.GetComponent<EventTriggerControl>().eventTrigger.GetComponent<TriggerProperties>().trigger_keyword;
+        if (newkey != null)
+        {
+            key = newkey;
+        }
         Debug.Log("this is the keyword: " + key);
         AIDialogue(key);
         
@@ -158,7 +170,7 @@ public class DialogueManager : MonoBehaviour
         //also need to un-freeze player motion
         Debug.Log("end of conversation");
 
-        D_animator.SetBool("IsOpen", false);
+        //D_animator.SetBool("IsOpen", false);
 
         //open input window
         inputManager.inputWindow.SetActive(true);
@@ -166,7 +178,7 @@ public class DialogueManager : MonoBehaviour
         fps.isLock = false;
 
         //disable dialoguebox for button controls
-        dialogueBox.SetActive(false);
+        //dialogueBox.SetActive(false);
         fps.canMove = false;
     }
 
@@ -177,8 +189,9 @@ public class DialogueManager : MonoBehaviour
         menu.canPause = true; //game can pause again
 
         //comment if bugged
-        dialogueBox.SetActive(true);
+        dialogueBox.SetActive(false);
         D_animator.SetBool("IsOpen", false);
+        dialogueBox.SetActive(true);
     }
 //----------------------------------------------- V2 Updates: AI System -----------------------------------------------------------------
 
@@ -218,6 +231,13 @@ public class DialogueManager : MonoBehaviour
      */
     public string ChooseResponse(string[] keywords, string[] dialogue_options, string input)
     {
+        //for cancelling and returning to conversations
+        if(key == "reminder")
+        {
+            return ResumeChooseResponse(keywords, dialogue_options, input);
+        }
+
+        //normal AI conversations
         string current_word = "";
         string finalresponse = "";
 
@@ -229,7 +249,7 @@ public class DialogueManager : MonoBehaviour
         //check whether a word in the input string matches a keyword
         foreach(char c in input)
         {
-            if (char.IsWhiteSpace(c) || c.Equals(",") || c.Equals("!") || c.Equals(".") || c.Equals("?"))
+            if (char.IsWhiteSpace(c) || c.Equals(",") || c.Equals("!") || c.Equals(".") || c.Equals("?") || c.Equals("'"))
             {
                 num_keys += CompareToKeys(current_word, keywords);
 
@@ -287,17 +307,28 @@ public class DialogueManager : MonoBehaviour
         //Generate response from AI to show player
         string response = ChooseResponse(keywords, dialogue_options, player_input);
 
-        //Display AI response as pop-up 
-        popupManager.DictionaryPopup(DialogueLines.Name_Revealed, response);
-        if(key == "ending")
+        if(key == "reminder") //if we are trying to resume a conversation
         {
-            isEnd = true; //fancy fade to black stuff
+            key = response;
+            AIDialogue(key);
         }
-        else
+
+        else //otherwise
         {
-            SetConversationStatus();
-            Unfreeze();
-        }
+            //Display AI response as pop-up 
+            popupManager.DictionaryPopup(DialogueLines.Name_Revealed, response);
+            if (key == "ending")
+            {
+                dialogueBox.SetActive(false);
+                isEnd = true; //fancy fade to black stuff
+            }
+            else
+            {
+                SetConversationStatus();
+                doorController.UnlockDoors();
+                Unfreeze();
+            }
+        }   
     }
 
     int CompareToKeys(string word, string[] keywords)
@@ -339,6 +370,8 @@ public class DialogueManager : MonoBehaviour
         //Display AI response as pop-up 
         popupManager.DictionaryPopup(DialogueLines.Name_Revealed, cancel);
         enterControls.GetComponent<ControlManager>().ShowControls();
+        answerbutton.SetActive(true);
+        doorController.LockAllDoors();
         Unfreeze();
     }
 
@@ -492,5 +525,46 @@ public class DialogueManager : MonoBehaviour
                 house = true;  
             }
         }
+    }
+
+    //method implemented for players who "cancel" a conversation and return to it later
+    //lets players choose which "room" to talk about and then shows that dialogue prompt as normal AI conversation
+    public void ResumeConversation()
+    {
+        //clear any dialogue pop ups on screen
+        popupManager.popupDialogueBox.SetActive(false);
+        answerbutton.SetActive(false);
+
+        //step 1: show dialogue box with AI conversation with "reminder" as keyword
+        //key = "reminder";
+        Debug.Log(key);
+        AIDialogue(key);
+    }
+
+    //choose a response based on resuming a conversation - aka tell the system which room they want to talk to Rebecca about
+    //called through AIDialogue when the key is "reminder"
+    public string ResumeChooseResponse(string[] keywords, string[] dialogue_options, string input)
+    {
+        string current_word = "";
+
+        //check whether a word in the input string matches a keyword
+        foreach (char c in input)
+        {
+            if (char.IsWhiteSpace(c) || c.Equals(",") || c.Equals("!") || c.Equals(".") || c.Equals("?") || c.Equals("'")) 
+            {
+                foreach (string thiskey in keywords)
+                {
+                    if (thiskey.Equals(current_word))
+                    {
+                        return thiskey; //return and terminate search
+                    }
+                }
+                current_word = "";
+                //skip white space character?
+                continue;
+            }
+            current_word += c;
+        }
+        return "reminder";
     }
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           

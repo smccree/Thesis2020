@@ -5,15 +5,7 @@ using UnityEngine;
 public class DialogueLines : MonoBehaviour
 {
     /*class is a box that stores references to all the dialogue in the game
-    treats like a string table
-    naming convention: room and response #
-    for now each room gets 5
-        1 = line Voice says, 4 = responses to the player's input
-
-    Also: 5 generic failure lines; aka you have disappointed me, you're not taking this seriously.
-
-        IMPORTANT NOTE:
-        this probably will have to be rebuilt as a DICTIONARY with key/value pairs
+        DICTIONARY with key/value pairs
         
         -Key: conversation #/identification code
         -array of strings:
@@ -22,15 +14,12 @@ public class DialogueLines : MonoBehaviour
         -list of keywords:
             iterate through player input string to find a match to keyword[0-2]
 
-        what I THINK I should do:
         Dictionary<string, string[]> dict_lines = new Dictionary<string, string[]>();
         where string = key
         string[] = values:
             string[0] = intro of the conversation
-            string[1] = ANOTHER list of keywords
-            string[2 - 5] = responses A - D
+            string[1 - 4] = responses A - D
 
-        WHAT I ACTUALLY AM DOING
         2 dictionaries: one for key: keywords, one for key: dialogue lines.
     */
 
@@ -43,6 +32,12 @@ public class DialogueLines : MonoBehaviour
 
     public static string Name = "Echoing Voice";
     public static string Name_Revealed = "Rebecca Stearn";
+
+    public static string Reminder_1 = "Are you ready? This house is quite big. We have the entrance, dining room, library, study, drawing room, Rebecca's room, Frederick's room, Eliza's room, dressing room, kitchen, pantry, and housekeeper's room, after all. Which room do you want to tell me about?";
+    public static string Reminder_2 = "Yes, I agree, the house is quite big. We have the entrance, dining room, library, study, drawing room, Rebecca's room, Frederick's room, Eliza's room, dressing room, kitchen, pantry, and housekeeper's room, after all.";
+    public static string[] Reminders = { Reminder_1, Reminder_2 };
+    public static string[] Reminder_Keywords = { "entrance", "dining", "library", "study", "drawing", "Rebecca", "rebecca", "Frederick", "Fred", "frederick", "fred", "Eliza", "eliza", "dressing", "kitchen", "pantry", "housekeeper" };
+    
 
     public static string Entrance_OP = "Wait, was that the door? Finally! Who are you? What are you doing here?";
     public static string Entrance_0 = "Hold on... yes, it is you! Eliza! I have no idea why I got this way, but perhaps now that you're here you could look around for me. Maybe I'll remember something.";
@@ -142,6 +137,7 @@ public class DialogueLines : MonoBehaviour
     public static string Locked_Study = "Locked, huh? I'm sure the key is somewhere in this house.";
     public static string Locked_Basement = "This is quite an odd looking door. It seems as though you'll need three keys to open it.";
     public static string Locked_Cellar = "Isn't this where you store food? Why lock this door, of all places?";
+    public static string Locked_Other = "We shouldn't leave this room until we've talked about what you found.";
 
     public static string Voice_Failure_1 = "You are an excellent debugger";
     public static string Voice_Failure_2 = "You go girl! Get that game did!";
@@ -211,6 +207,7 @@ public class DialogueLines : MonoBehaviour
         dict_lines.Add("cellar", CellVal);
         dict_lines.Add("housekeeper", HouseVal);
         dict_lines.Add("ending", EndVal);
+        dict_lines.Add("reminder", Reminders);
 
         //Room Key --> Desired Keywords
         dict_keywords.Add("entrance", Entrance_Keywords);
@@ -226,5 +223,6 @@ public class DialogueLines : MonoBehaviour
         dict_keywords.Add("cellar", Cellar_Keywords);
         dict_keywords.Add("housekeeper", Housekeeper_Keywords);
         dict_keywords.Add("ending", End_Keywords);
+        dict_keywords.Add("reminder", Reminder_Keywords);
     }
 }

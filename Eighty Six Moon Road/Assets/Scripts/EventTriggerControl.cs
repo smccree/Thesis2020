@@ -14,7 +14,6 @@ public class EventTriggerControl : MonoBehaviour
     }
     private void OnTriggerStay(Collider collider)
     {
-        //Debug.Log(collider.tag);
         //triggering a conversation with voice and player
         if (collider.CompareTag("EventTrigger") == true)
         {
@@ -31,7 +30,6 @@ public class EventTriggerControl : MonoBehaviour
                 eventTrigger = collider.gameObject;
                 eventTrigger.GetComponent<ConversationTrigger>().TriggerDialogue();
                 Destroy(eventTrigger);
-                //endDrama.num_triggered++;
             }
             
         }
@@ -42,7 +40,7 @@ public class EventTriggerControl : MonoBehaviour
             //Debug.Log(eventTrigger.name);
             Debug.Log("triggering dialogue....");
             eventTrigger.GetComponent<DialogueTrigger>().TriggerDialogue();
-            Destroy(eventTrigger);
+            //Destroy(eventTrigger);
         }
     }
 
