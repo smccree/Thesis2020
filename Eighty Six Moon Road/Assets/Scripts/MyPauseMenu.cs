@@ -13,15 +13,11 @@ public class MyPauseMenu : MonoBehaviour
 
     private void Awake()
     {
-        menu.SetActive(false);
+        //menu.SetActive(false);
         canPause = true;
     }
     private void Update()
     {
-        if(fps.canMove == true)
-        {
-            canPause = true; //quick fixing - after dialogue system closes won't let you pause for some reason
-        }
         if (Input.GetKeyDown(KeyCode.Tab) && canPause == true)
         {
             if(isPaused == true)
@@ -32,6 +28,14 @@ public class MyPauseMenu : MonoBehaviour
             {
                 PauseGame();
             }
+        }
+        
+    }
+    private void LateUpdate()
+    {
+        if (fps.canMove == true)
+        {
+            canPause = true; //quick fixing - after dialogue system closes won't let you pause for some reason
         }
     }
 

@@ -55,6 +55,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void Awake()
         {
             reticle.SetActive(true); //view reticle
+                                     //added
+            canMove = true;
+            isLock = true;
         }
         private void Start()
         {
@@ -68,10 +71,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
-
-            //added
-            canMove = true;
-            isLock = true;
         }
 
 

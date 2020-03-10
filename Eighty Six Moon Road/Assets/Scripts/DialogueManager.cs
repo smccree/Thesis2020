@@ -38,7 +38,7 @@ public class DialogueManager : MonoBehaviour
     //building AI dialogue system variables:
     private string[] keywords;
     private string[] dialogue_options;
-    private string key;
+    private static string key;
 
     //Control reminder for cancelling conversation
     public GameObject enterControls;
@@ -90,16 +90,9 @@ public class DialogueManager : MonoBehaviour
 
         answerbutton.SetActive(false);
     }
-    //steps to do this:
-    //1: pause player movement (enter key + keyboard type become active)
-    //2: pop up dialogue box
-    //3: spawn first message from Voice
+
     public void StartDialogue(Dialogue dialogue)
     {
-        //----------------------------------Separating Simple Dialogue system vs. AI based one -------------------------------------------------
-
-        Debug.Log("Starting AI Dialogue");
-
         //clear any dialogue pop ups on screen
         popupManager.popupDialogueBox.SetActive(false);
 
@@ -109,29 +102,7 @@ public class DialogueManager : MonoBehaviour
             key = newkey;
         }
         Debug.Log("this is the keyword: " + key);
-        AIDialogue(key);
-        
-        /*
-        Debug.Log("Starting Simple Dialogue");
-        fps.canMove = false; //pause movement
-        menu.canPause = false; //can't pause
-
-        dialogueBox.SetActive(true); //just in case it's inactive and we can't use it again
-
-        //temporarily disable while dialogue window is open
-        inputManager.inputWindow.SetActive(false);
-        D_animator.SetBool("IsOpen", true); //open dialogue box animation
-
-        nameText.text = dialogue.name;//person's name
-
-        sentences.Clear();
-        foreach (string sentence in dialogue.sentences)
-        {
-            sentences.Enqueue(sentence);
-        }
-        Debug.Log("Start Dialogue sentences: " + sentences.Count);
-        DisplayNextSentence();
-        */    
+        AIDialogue(key);  
     }
 
     public void DisplayNextSentence()

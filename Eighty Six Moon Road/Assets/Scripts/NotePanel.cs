@@ -44,7 +44,7 @@ public class NotePanel : MonoBehaviour
     public GameObject[] notes_first = { note8, note9, note10, note11, note12, note13 };
     public GameObject[] notes_second = { note14, note15, note16, note17, note18, note19 };
     public GameObject[] notes_basement = { note20, note21, note22, note23, note24, note25, note26, note27 };
-    void Awake()
+    /*void Awake()
     {
         panel_main.SetActive(false);
         panel_ground.SetActive(false);
@@ -56,7 +56,7 @@ public class NotePanel : MonoBehaviour
         InitializePanel(notes_first);
         InitializePanel(notes_second);
         InitializePanel(notes_basement);
-    }
+    }*/
 
     private void Update()
     {
