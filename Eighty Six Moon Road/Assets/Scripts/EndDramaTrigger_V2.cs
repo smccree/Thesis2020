@@ -8,7 +8,7 @@ public class EndDramaTrigger_V2 : MonoBehaviour
     public int num_triggered = 0;
     public GameObject end;
     bool endtriggered;
-    int count = 500;
+    int count = 600;
     void Start()
     {
         end.SetActive(false);
