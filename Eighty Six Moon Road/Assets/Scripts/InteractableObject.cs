@@ -34,14 +34,6 @@ public class InteractableObject : MonoBehaviour
         {
             currentobj = hit.collider.gameObject;
 
-            //bugged! Label won't disappear when you look away :( instead they stay open forever :(((
-            /*
-            if (currentobj.CompareTag("interactable") == true)
-            {
-                currentobj.GetComponent<TextUI>().ShowLabel();
-            }*/
-            //Debug.Log(currentobj.name);
-
             if (Input.GetMouseButtonDown(1) && interacting == false)
             {
 
@@ -52,7 +44,6 @@ public class InteractableObject : MonoBehaviour
             //reseting
         }
         currentobj = null;
-        //Debug.Log(currentobj);
     }
 
     public void Interact(GameObject currentobj)
@@ -111,7 +102,6 @@ public class InteractableObject : MonoBehaviour
         else if(currentobj.name.Contains("Object"))
         {
             Debug.Log("Player found an object!");
-            //currentobj.GetComponent<TextUI>().HideLabel();
             label = false;
             currentobj.GetComponent<TextUI>().ShowTextUI();
         }
@@ -122,7 +112,6 @@ public class InteractableObject : MonoBehaviour
             label = false;
             currentobj.GetComponent<TextUI>().ShowTextUI();
             currentobj.GetComponent<LoreObject>().interacted = true;
-            //Debug.Log("interacted with lorecube");
         }
 
         else if (currentobj.name.Contains("Convo") || currentobj.name.Contains("FinalCube"))
@@ -131,7 +120,6 @@ public class InteractableObject : MonoBehaviour
             if (currentobj.GetComponent<ConversationObject>().interacted == false)
             {
                 currentobj.GetComponent<ConversationTrigger>().TriggerDialogue();
-                //Debug.Log("interacted with convo cube");
                 currentobj.GetComponent<ConversationObject>().interacted = true;
             }
         }

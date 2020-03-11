@@ -19,6 +19,13 @@ public class EventTriggerControl : MonoBehaviour
         {
             if(collider.name == "EndDramaTrigger")
             {
+                //hide text UI + set player as not interacting with stuff anymore
+                //not sure if this works but leaving it in
+                if(this.GetComponent<InteractableObject>().interacting == true)
+                {
+                    this.GetComponent<InteractableObject>().currentobj.GetComponent<TextUI>().HideTextUI();
+                    this.GetComponent<InteractableObject>().interacting = false;
+                }
                 Debug.Log("triggering end of the game");
                 eventTrigger = collider.gameObject;
                 eventTrigger.GetComponent<ConversationTrigger>().TriggerDialogue();

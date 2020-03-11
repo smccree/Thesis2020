@@ -12,7 +12,6 @@ public class TextUI : MonoBehaviour
     public Image popup; //image to display
     public UnityStandardAssets.Characters.FirstPerson.FirstPersonController fps; //for pausing player movement
     public GameObject loreobj; //the lore object this text ui is tied to
-    //public GameObject eventtrigger; //conversation trigger (when interactables have been clicked and closed)
     public void Start()
     {
         panel.SetActive(false);

@@ -70,10 +70,10 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>();
-        //useAI = true;
+        useAI = true;
         isEnd = false;
         endingbutton.SetActive(false);
-        useAI = false;
+        //useAI = false;
 
         entrance = false;
         dining = false;
@@ -137,29 +137,20 @@ public class DialogueManager : MonoBehaviour
     }
     public void EndDialogue()
     {
-        //make dialogue box lower and disappear
-        //also need to un-freeze player motion
-        Debug.Log("end of conversation");
-
-        //D_animator.SetBool("IsOpen", false);
-
         //open input window
         inputManager.inputWindow.SetActive(true);
         inputManager.OpenInputWindow();
         fps.isLock = false;
 
-        //disable dialoguebox for button controls
-        //dialogueBox.SetActive(false);
         fps.canMove = false;
     }
 
-    public void Unfreeze() //separate this into a method for testing reasons
+    public void Unfreeze()
     {
         fps.canMove = true;
         fps.isLock = true; //hide cursor now that dialogue stuff is done
         menu.canPause = true; //game can pause again
 
-        //comment if bugged
         dialogueBox.SetActive(false);
         D_animator.SetBool("IsOpen", false);
         dialogueBox.SetActive(true);
@@ -191,7 +182,8 @@ public class DialogueManager : MonoBehaviour
         keywords = DialogueLines.dict_keywords[key];
 
         //Display opening line
-        dialogueText.text = dialogue_options[0];
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(dialogue_options[0]));
     }
 
     /*Chooses the next line of dialogue based on the player's text input
@@ -202,13 +194,6 @@ public class DialogueManager : MonoBehaviour
      */
     public string ChooseResponse(string[] keywords, string[] dialogue_options, string input)
     {
-        //for cancelling and returning to conversations
-        if(key == "reminder")
-        {
-            return ResumeChooseResponse(keywords, dialogue_options, input);
-        }
-
-        //normal AI conversations
         string current_word = "";
         string finalresponse = "";
 
@@ -217,10 +202,42 @@ public class DialogueManager : MonoBehaviour
         int num_keys = 0;
         int end = input.Length - 1;
 
+        //if the player submits an empty string:
+        if(input.Equals("") && useAI == true)
+        {
+            if(key == "ending") //last line in the game
+            {
+                return DialogueLines.Voice_Quiet_4;
+            }
+            else if(key == "entrance")
+            {
+                return DialogueLines.Voice_Quiet_5;
+            }
+            else
+            {
+                int randomchoice = Random.Range(0, 3);
+
+                if (randomchoice == 0)
+                {
+                    return DialogueLines.Voice_Quiet_1;
+                }
+
+                else if (randomchoice == 1)
+                {
+                    return DialogueLines.Voice_Quiet_2;
+                }
+
+                else
+                {
+                    return DialogueLines.Voice_Quiet_3;
+                }
+            }
+        }
+
         //check whether a word in the input string matches a keyword
         foreach(char c in input)
         {
-            if (char.IsWhiteSpace(c) || c.Equals(",") || c.Equals("!") || c.Equals(".") || c.Equals("?") || c.Equals("'"))
+            if (char.IsWhiteSpace(c) || c.Equals(',') || c.Equals('!') || c.Equals('.') || c.Equals('?'))
             {
                 num_keys += CompareToKeys(current_word, keywords);
 
@@ -278,27 +295,18 @@ public class DialogueManager : MonoBehaviour
         //Generate response from AI to show player
         string response = ChooseResponse(keywords, dialogue_options, player_input);
 
-        if(key == "reminder") //if we are trying to resume a conversation
+        //Display AI response as pop-up 
+        popupManager.DictionaryPopup(DialogueLines.Name_Revealed, response);
+        if (key == "ending")
         {
-            key = response;
-            AIDialogue(key);
+            dialogueBox.SetActive(false);
+            isEnd = true; //fancy fade to black stuff
         }
-
-        else //otherwise
+        else
         {
-            //Display AI response as pop-up 
-            popupManager.DictionaryPopup(DialogueLines.Name_Revealed, response);
-            if (key == "ending")
-            {
-                dialogueBox.SetActive(false);
-                isEnd = true; //fancy fade to black stuff
-            }
-            else
-            {
-                SetConversationStatus();
-                doorController.UnlockDoors();
-                Unfreeze();
-            }
+            SetConversationStatus();
+            doorController.UnlockDoors();
+            Unfreeze();
         }   
     }
 
@@ -317,8 +325,6 @@ public class DialogueManager : MonoBehaviour
     public void CancelDialogue()
     {
         //Close input window: let players re-read things before answering prompt
-
-        //cancel response:
         int randomchoice = Random.Range(0, 3);
 
         string cancel = null;
@@ -388,7 +394,8 @@ public class DialogueManager : MonoBehaviour
 
     public void SetConversationStatus()
     {
-        //inefficient, but band-aid solution. Works because there are only 12 triggers/booleans, but for a larger game this would be terrible.
+        //inefficient, but band-aid solution. Works because there are only 12 triggers/booleans, 
+        //but for a larger game this would be terrible.
         if(key == "entrance")
         {
             if (entrance == false)
@@ -506,8 +513,6 @@ public class DialogueManager : MonoBehaviour
         popupManager.popupDialogueBox.SetActive(false);
         answerbutton.SetActive(false);
 
-        //step 1: show dialogue box with AI conversation with "reminder" as keyword
-        //key = "reminder";
         Debug.Log(key);
         AIDialogue(key);
     }

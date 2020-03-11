@@ -20,8 +20,8 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-        //useAI = true;
-        useAI = false;
+        useAI = true;
+        //useAI = false;
     }
     public void ReceiveInput()
     {

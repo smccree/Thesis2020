@@ -8,14 +8,13 @@ public class EndDramaTrigger_V2 : MonoBehaviour
     public int num_triggered = 0;
     public GameObject end;
     bool endtriggered;
-    int count = 800;
+    int count = 500;
     void Start()
     {
         end.SetActive(false);
         endtriggered = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(endtriggered == false)
