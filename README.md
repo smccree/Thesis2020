@@ -19,5 +19,6 @@ This game is being built in Unity 3D with a majority of assets sourced from the 
 2. download zip file (most recent build)
 3. Unzip folder, navigate to "Eighty Six Moon Road.exe"
 4. Run the .exe file
+5. AFTER COMPLETING THE GAME please fill out this survey: https://neu.co1.qualtrics.com/jfe/form/SV_0lBwVMnHGHMmMG9
 
-#### As this game is currently in development, there are quite a few bugs.
+#### As this game is currently in development, there may be bugs.
